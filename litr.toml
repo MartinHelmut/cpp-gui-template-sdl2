@@ -1,0 +1,24 @@
+[commands.build]
+script = [
+  "cmake -GNinja -DCMAKE_BUILD_TYPE=%{target} -B build/%{target}",
+  "ninja -C build/%{target}"
+]
+description = "Build the application for a given target."
+
+[commands.start]
+script = "./build/%{target}/src/app/App"
+description = "Start the application."
+
+[commands.test]
+script = "echo 'No tests defined, yet!'"
+description = "Run all tests."
+
+[commands.format]
+script = "find src -iname *.hpp -o -iname *.cpp | xargs clang-format -i"
+description = "Format project sources via clang-format."
+
+[params.target]
+shortcut = "t"
+description = "Define the application build target."
+type = ["debug", "release"]
+default = "debug"

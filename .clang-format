@@ -1,0 +1,16 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+AlignAfterOpenBracket: DontAlign
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLambdasOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: false
+AllowAllConstructorInitializersOnNextLine: false
+BinPackArguments: false
+BinPackParameters: false
+ColumnLimit: 100
+
+...

@@ -1,0 +1,40 @@
+---
+Checks: >
+  *,
+  -android-*,
+  -abseil-*,
+  -altera-*,
+  -darwin-*,
+  -fuchsia-*,
+  -google-*,
+  -objc-*,
+  -zircon-*,
+  -llvm*,
+  -cppcoreguidelines-non-private-member-variables-in-classes,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-macro-usage,
+  -readability-function-cognitive-complexity,
+  -misc-non-private-member-variables-in-classes,
+  -misc-static-assert,
+  -modernize-use-trailing-return-type,
+  -bugprone-easily-swappable-parameters,
+  -cert-env33-c,
+  -cert-err58-cpp
+
+WarningsAsErrors: '*'
+HeaderFilterRegex: ''
+FormatStyle: none
+
+CheckOptions:
+  - { key: readability-identifier-naming.NamespaceCase,              value: CamelCase }
+  - { key: readability-identifier-naming.ClassCase,                  value: CamelCase }
+  - { key: readability-identifier-naming.PrivateMemberPrefix,        value: m_ }
+  - { key: readability-identifier-naming.StructCase,                 value: CamelCase }
+  - { key: readability-identifier-naming.ClassMethodCase,            value: lower_case }
+  - { key: readability-identifier-naming.ClassMemberCase,            value: lower_case }
+  - { key: readability-identifier-naming.FunctionCase,               value: lower_case }
+  - { key: readability-identifier-naming.VariableCase,               value: lower_case }
+  - { key: readability-identifier-naming.GlobalConstantCase,         value: UPPER_CASE }
+  - { key: readability-identifier-length.MinimumVariableNameLength,  value: 2 }
+  - { key: readability-identifier-length.MinimumParameterNameLength, value: 2 }
+  - { key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors, value: '1' }
