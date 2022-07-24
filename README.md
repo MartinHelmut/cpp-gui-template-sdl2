@@ -1,6 +1,6 @@
-# Base project setup
+# Base GUI project setup
 
-C++ project template.
+C++ gui project template.
 
 ## Setup
 
@@ -11,3 +11,7 @@ Quick setup to build and run the application:
 ```shell
 litr build,start
 ```
+
+## Disclaimer
+
+Special acknowledgment to the amazing open source font [Manrope](https://manropefont.com).

@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.22)
 include(cmake/UniversalAppleBuild.cmake)
 
 project(
-  BasicProjectSetup
-  DESCRIPTION "Base project setup."
+  BasicGuiProjectSetup
+  DESCRIPTION "Base gui project setup."
   LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)

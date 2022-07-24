@@ -2,8 +2,11 @@
  * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
  */
 
-#include "SomeLibrary/Core/Log.hpp"
-#include "SomeLibrary/Debug/Instrumentor.hpp"
+#include <exception>
+
+#include "Core/Application.hpp"
+#include "Core/Debug/Instrumentor.hpp"
+#include "Core/Log.hpp"
 
 int main() {
   try {
@@ -11,7 +14,8 @@ int main() {
 
     {
       APP_PROFILE_SCOPE("Test scope");
-      APP_INFO("Hello World\n");
+      App::Application app{"GUI Template"};
+      app.run();
     }
 
     APP_PROFILE_END_SESSION();

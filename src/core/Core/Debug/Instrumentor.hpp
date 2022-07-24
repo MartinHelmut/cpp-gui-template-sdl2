@@ -13,7 +13,7 @@
 #include <thread>
 #include <utility>
 
-#include "SomeLibrary/Core/Log.hpp"
+#include "Core/Log.hpp"
 
 namespace App::Debug {
 

@@ -1,2 +1,2 @@
 add_subdirectory(app)
-add_subdirectory(some_library)
+add_subdirectory(core)
