@@ -7,13 +7,6 @@ if (NOT imgui_POPULATED)
   FetchContent_Populate(imgui)
 endif ()
 
-if (__APPLE__)
-  add_definitions(-DGL_SILENCE_DEPRECATION)
-
-  find_library(COCOA_LIBRARY Cocoa)
-  find_library(IOKIT_LIBRARY IOKit)
-endif ()
-
 add_library(imgui
   ${imgui_SOURCE_DIR}/imgui.cpp ${imgui_SOURCE_DIR}/imgui.h
   ${imgui_SOURCE_DIR}/imconfig.h ${imgui_SOURCE_DIR}/imgui_demo.cpp
