@@ -4,10 +4,11 @@
 
 #include "Application.hpp"
 
+#include <backends/imgui_impl_sdl.h>
+#include <backends/imgui_impl_sdlrenderer.h>
+#include <imgui.h>
+
 #include "Core/Debug/Instrumentor.hpp"
-#include "backends/imgui_impl_sdl.h"
-#include "backends/imgui_impl_sdlrenderer.h"
-#include "imgui.h"
 
 namespace App {
 
@@ -43,11 +44,9 @@ ExitStatus App::Application::run() {
   IMGUI_CHECKVERSION();
   ImGui::CreateContext();
   ImGuiIO& io{ImGui::GetIO()};
-  (void)io;
 
-  io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-  io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-  io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+  io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable |
+                    ImGuiConfigFlags_ViewportsEnable;
 
   // ImGUI font
   const float font_scaling_factor{m_window->get_scale()};
@@ -131,7 +130,7 @@ ExitStatus App::Application::run() {
     // Rendering
     ImGui::Render();
 
-    SDL_SetRenderDrawColor(m_window->get_native_renderer(), 115, 140, 153, 255);
+    SDL_SetRenderDrawColor(m_window->get_native_renderer(), 100, 100, 100, 255);
     SDL_RenderClear(m_window->get_native_renderer());
     ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
     SDL_RenderPresent(m_window->get_native_renderer());
