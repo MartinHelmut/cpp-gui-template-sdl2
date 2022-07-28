@@ -1,6 +1,6 @@
-# Base GUI project setup
+# Base GUI project setup with SDL2
 
-C++ gui project template.
+C++ gui project template with SDL2.
 
 ## Setup
 
