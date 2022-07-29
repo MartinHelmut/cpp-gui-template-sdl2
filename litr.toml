@@ -6,7 +6,7 @@ script = [
 description = "Build the application for a given target."
 
 [commands.start]
-script = "./build/%{target}/src/app/App"
+script = "cd ./build/%{target}/src/app && ./App"
 description = "Start the application."
 
 [commands.test]
