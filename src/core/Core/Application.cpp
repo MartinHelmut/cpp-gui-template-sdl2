@@ -15,7 +15,8 @@ namespace App {
 Application::Application(const std::string& title) {
   APP_PROFILE_FUNCTION();
 
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0) {
+  unsigned int init_flags{SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER};
+  if (SDL_Init(init_flags) != 0) {
     APP_ERROR("Error: %s\n", SDL_GetError());
     m_exit_status = ExitStatus::FAILURE;
   }
