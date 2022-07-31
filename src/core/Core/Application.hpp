@@ -39,8 +39,6 @@ class Application {
 
   bool m_running{true};
   bool m_minimized{false};
-
-  bool m_dock_space_open{true};
   bool m_show_some_panel{true};
 };
 

@@ -86,24 +86,9 @@ ExitStatus App::Application::run() {
     ImGui::NewFrame();
 
     if (!m_minimized) {
-      ImGuiViewport* viewport{ImGui::GetMainViewport()};
+      ImGui::DockSpaceOverViewport();
 
-      ImGui::SetNextWindowPos(viewport->WorkPos);
-      ImGui::SetNextWindowSize(viewport->WorkSize);
-      ImGui::SetNextWindowViewport(viewport->ID);
-
-      ImGuiWindowFlags window_flags{
-          ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar |
-          ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-          ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus};
-
-      ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0F, 0.0F));
-      ImGui::Begin("AppDockSpace", &m_dock_space_open, window_flags);
-      ImGui::PopStyleVar();
-
-      ImGui::DockSpace(ImGui::GetID("DockSpace"));
-
-      if (ImGui::BeginMenuBar()) {
+      if (ImGui::BeginMainMenuBar()) {
         if (ImGui::BeginMenu("File")) {
           if (ImGui::MenuItem("Exit", "Cmd+Q")) {
             stop();
@@ -115,7 +100,7 @@ ExitStatus App::Application::run() {
           ImGui::EndMenu();
         }
 
-        ImGui::EndMenuBar();
+        ImGui::EndMainMenuBar();
       }
 
       // Whatever GUI to implement here ...
@@ -124,8 +109,6 @@ ExitStatus App::Application::run() {
         ImGui::Text("Hello World");
         ImGui::End();
       }
-
-      ImGui::End();
     }
 
     // Rendering
