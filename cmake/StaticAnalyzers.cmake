@@ -4,7 +4,7 @@ if (NOT CMAKE_BUILD_TYPE STREQUAL "Release")
     message(STATUS "Using clang-tidy")
     set(CMAKE_CXX_CLANG_TIDY ${CLANGTIDY})
   else ()
-    message(SEND_ERROR "clang-tidy requested but executable not found")
+    message(WARNING "clang-tidy requested but executable not found")
   endif ()
 
   # This will gradually increase memory usage of the program,
