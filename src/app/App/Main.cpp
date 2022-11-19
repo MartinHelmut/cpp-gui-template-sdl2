@@ -8,7 +8,7 @@
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Log.hpp"
 
-int main() {
+int main(int /*unused*/, char** /*unused*/) {
   try {
     APP_PROFILE_BEGIN_SESSION_WITH_FILE("App", "profile.json");
 
