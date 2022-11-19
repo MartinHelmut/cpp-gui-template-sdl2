@@ -9,6 +9,8 @@ if (NOT CMAKE_BUILD_TYPE STREQUAL "Release")
 
   # This will gradually increase memory usage of the program,
   # running on Apple M1, 13.0.
-  message(STATUS "Using address sanitizer")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -fsanitize=address -g")
+  if (NOT WIN32)
+    message(STATUS "Using address sanitizer")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -fsanitize=address -g")
+  endif ()
 endif ()
