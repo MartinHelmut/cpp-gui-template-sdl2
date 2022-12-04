@@ -6,16 +6,6 @@ C++ gui project template with SDL2.
 
 The project uses [CMake](https://cmake.org) and [Ninja](https://ninja-build.org).
 
-### Using Litr
-
-When using [Litr](https://github.com/krieselreihe/litr), the quick setup to build and run the application is:
-
-```shell
-litr build,start
-```
-
-### Without Litr
-
 Build the application in debug mode:
 
 ```shell
@@ -27,6 +17,14 @@ Run the application:
 
 ```shell
 cd ./build/debug/src/app && ./App
+```
+
+### Using Litr
+
+When using [Litr](https://github.com/krieselreihe/litr), the quick setup to build and run the application is:
+
+```shell
+litr build,start
 ```
 
 ## Disclaimer

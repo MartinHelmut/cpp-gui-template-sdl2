@@ -17,7 +17,7 @@ add_subdirectory(fmt)
 FetchContent_Declare(
   imgui
   GIT_REPOSITORY "https://github.com/ocornut/imgui.git"
-  GIT_TAG 9964740a47fda96ee937cfea272ccac85dc6a500 # docking-latest
+  GIT_TAG c191faf0ba478e9c58a69c63306986a21ebfb6e4 # docking-latest
 )
 add_subdirectory(imgui)
 
