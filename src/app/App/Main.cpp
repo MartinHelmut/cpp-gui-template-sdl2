@@ -4,8 +4,6 @@
 
 #define SDL_MAIN_HANDLED
 
-#include <exception>
-
 #include "Core/Application.hpp"
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Log.hpp"

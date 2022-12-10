@@ -2,6 +2,11 @@
 
 C++ gui project template with SDL2.
 
+![Image of the example app.](example-app.png)
+
+**Remark:** The SDL2 renderer does not support multi-viewport and detached widgets. For this you can have a look at the
+[OpenGL version of this template](https://github.com/MartinHelmut/cpp-gui-template-sdl2-opengl).
+
 ## Setup
 
 The project uses [CMake](https://cmake.org) and [Ninja](https://ninja-build.org).
