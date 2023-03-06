@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
+ * Copyright (c) 2022-2023 Martin Helmut Fieber <info@martin-fieber.se>
  */
 
 #include "Window.hpp"
@@ -30,6 +30,10 @@ Window::Window(const Settings& settings) {
     APP_ERROR("Error creating SDL_Renderer!");
     return;
   }
+
+  SDL_RendererInfo info;
+  SDL_GetRendererInfo(m_renderer, &info);
+  APP_DEBUG("Current SDL_Renderer: {}", info.name);
 
   const float scale{get_scale()};
   SDL_RenderSetScale(m_renderer, scale, scale);

@@ -2,12 +2,31 @@ set(NAME "App")
 
 include(${PROJECT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/App/fonts DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+set(STATIC_ASSETS
+  ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
+  ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
-add_executable(${NAME} App/Main.cpp)
+# Info.plist file settings
+set(MACOSX_EXECUTABLE_NAME ${NAME})
+set(MACOSX_BUNDLE_ICON_FILE "icon")
+set(MACOSX_DEPLOYMENT_TARGET "13.1")
 
+add_executable(${NAME} WIN32 MACOSX_BUNDLE App/Main.cpp ${STATIC_ASSETS})
+install(TARGETS ${NAME} BUNDLE DESTINATION .)
+
+# macOS package settings
+set_source_files_properties(${STATIC_ASSETS} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+set_target_properties(${NAME} PROPERTIES
+  XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
+  MACOSX_BUNDLE_BUNDLE_VERSION "${BUILD_VERSION}"
+  MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+  MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist"
+  MACOSX_BUNDLE_GUI_IDENTIFIER "com.mycompany.${NAME}"
+  MACOSX_BUNDLE_COPYRIGHT "(c) 2023 My Company"
+  RESOURCE "${STATIC_ASSETS}")
+
+# Copy DLL files on Windows to the target App build folder.
 if (WIN32)
-  # Copy DLL files on Windows to the target App build folder.
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     $<TARGET_FILE:SDL2::SDL2>

@@ -1,9 +1,16 @@
 [commands.build]
 script = [
-  "cmake -GNinja -DCMAKE_BUILD_TYPE=%{target} -B build/%{target}",
+  "cmake -G%{generator} -DCMAKE_BUILD_TYPE=%{target} -B build/%{target}",
   "ninja -C build/%{target}"
 ]
 description = "Build the application for a given target."
+
+[commands.dist]
+script = [
+  "litr build --target=release",
+  "cpack --config build/release/CPackConfig.cmake"
+]
+description = "Create the application distribution package from a release build."
 
 [commands.start]
 script = "cd ./build/%{target}/src/app && ./App"
@@ -22,3 +29,9 @@ shortcut = "t"
 description = "Define the application build target."
 type = ["debug", "release"]
 default = "debug"
+
+[params.generator]
+shortcut = "g"
+description = "Define the CMake generator."
+type = ["Ninja", "Xcode"]
+default = "Ninja"

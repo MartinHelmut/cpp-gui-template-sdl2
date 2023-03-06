@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
+ * Copyright (c) 2022-2023 Martin Helmut Fieber <info@martin-fieber.se>
  */
 
 #include "Application.hpp"
 
-#include <backends/imgui_impl_sdl.h>
+#include <backends/imgui_impl_sdl2.h>
 #include <backends/imgui_impl_sdlrenderer.h>
 #include <imgui.h>
 
@@ -15,7 +15,7 @@ namespace App {
 Application::Application(const std::string& title) {
   APP_PROFILE_FUNCTION();
 
-  unsigned int init_flags{SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER};
+  const unsigned int init_flags{SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER};
   if (SDL_Init(init_flags) != 0) {
     APP_ERROR("Error: %s\n", SDL_GetError());
     m_exit_status = ExitStatus::FAILURE;
@@ -49,11 +49,21 @@ ExitStatus App::Application::run() {
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable |
                     ImGuiConfigFlags_ViewportsEnable;
 
+  const std::string user_config_path{SDL_GetPrefPath("com.mycompany", "app")};
+  APP_DEBUG("User config path: {}", user_config_path);
+
+  // Absolute imgui.ini path to preserve settings independent of app location.
+  static const std::string imgui_ini_filename{user_config_path + "imgui.ini"};
+  io.IniFilename = imgui_ini_filename.c_str();
+
   // ImGUI font
   const float font_scaling_factor{m_window->get_scale()};
   const float font_size{18.0F * font_scaling_factor};
-  io.Fonts->AddFontFromFileTTF("fonts/Manrope.ttf", font_size);
-  io.FontDefault = io.Fonts->AddFontFromFileTTF("fonts/Manrope.ttf", font_size);
+  std::string font_path{SDL_GetBasePath()};
+  font_path.append("Manrope.ttf");
+
+  io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
+  io.FontDefault = io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
   io.FontGlobalScale = 1.0F / font_scaling_factor;
 
   // Setup Platform/Renderer backends

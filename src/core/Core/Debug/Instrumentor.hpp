@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
+ * Copyright (c) 2022-2023 Martin Helmut Fieber <info@martin-fieber.se>
  */
 
 #pragma once
@@ -39,7 +39,7 @@ class Instrumentor {
   Instrumentor& operator=(Instrumentor&& other) = delete;
 
   void begin_session(const std::string& name, const std::string& filepath = "results.json") {
-    std::lock_guard lock(m_mutex);
+    const std::lock_guard lock(m_mutex);
 
     if (m_current_session != nullptr) {
       // If there is already a current session, then close it before beginning new one.
@@ -62,7 +62,7 @@ class Instrumentor {
   }
 
   void end_session() {
-    std::lock_guard lock(m_mutex);
+    const std::lock_guard lock(m_mutex);
     internal_end_session();
   }
 
@@ -83,7 +83,7 @@ class Instrumentor {
     json << "\"ts\":" << result.start.count();
     json << "}";
 
-    std::lock_guard lock(m_mutex);
+    const std::lock_guard lock(m_mutex);
     if (m_current_session != nullptr) {
       m_output_stream << json.str();
       m_output_stream.flush();
@@ -197,8 +197,10 @@ class InstrumentationTimer {
 #define APP_PROFILE_BEGIN_SESSION_WITH_FILE(name, file_path) \
   ::App::Debug::Instrumentor::get().begin_session(name, file_path)
 #define APP_PROFILE_END_SESSION() ::App::Debug::Instrumentor::get().end_session()
-#define APP_PROFILE_SCOPE(name) \
-  ::App::Debug::InstrumentationTimer JOIN(timer, __LINE__) { name }
+#define APP_PROFILE_SCOPE(name)                                    \
+  const ::App::Debug::InstrumentationTimer JOIN(timer, __LINE__) { \
+    name                                                           \
+  }
 #define APP_PROFILE_FUNCTION() APP_PROFILE_SCOPE(APP_FUNC_SIG)
 #else
 #define APP_PROFILE_BEGIN_SESSION(name)

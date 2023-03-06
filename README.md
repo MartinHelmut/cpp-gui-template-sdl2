@@ -24,12 +24,26 @@ Run the application:
 cd ./build/debug/src/app && ./App
 ```
 
+## Distribution
+
+To create a distribution package CPack is used from a Release build.
+
+```shell
+cpack --config build/release/CPackConfig.cmake
+```
+
 ### Using Litr
 
 When using [Litr](https://github.com/krieselreihe/litr), the quick setup to build and run the application is:
 
 ```shell
 litr build,start
+```
+
+To create a package distribution run:
+
+```shell
+litr dist
 ```
 
 ## Disclaimer
