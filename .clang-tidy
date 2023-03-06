@@ -24,6 +24,7 @@ Checks: >
   -misc-static-assert,
   -modernize-use-trailing-return-type,
   -bugprone-easily-swappable-parameters,
+  -bugprone-exception-escape,
   -cert-env33-c,
   -cert-err58-cpp
 
