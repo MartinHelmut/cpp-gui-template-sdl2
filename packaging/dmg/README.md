@@ -1,4 +1,6 @@
-# Generate DMG background
+# Generate icons
+
+## Generate DMG background
 
 To properly support Retina displays, a TIFF with a high DPI version needs to be created. From the project root run:
 

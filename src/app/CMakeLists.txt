@@ -11,8 +11,13 @@ set(MACOSX_EXECUTABLE_NAME ${NAME})
 set(MACOSX_BUNDLE_ICON_FILE "icon")
 set(MACOSX_DEPLOYMENT_TARGET "13.1")
 
+set(CMAKE_BUILD_WITH_INSTALL_RPATH YES)
+
 add_executable(${NAME} WIN32 MACOSX_BUNDLE App/Main.cpp ${STATIC_ASSETS})
-install(TARGETS ${NAME} BUNDLE DESTINATION .)
+
+install(TARGETS ${NAME}
+  BUNDLE DESTINATION .
+  FRAMEWORK DESTINATION ${NAME}.app/Contents/Frameworks)
 
 # macOS package settings
 set_source_files_properties(${STATIC_ASSETS} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
@@ -21,8 +26,9 @@ set_target_properties(${NAME} PROPERTIES
   MACOSX_BUNDLE_BUNDLE_VERSION "${BUILD_VERSION}"
   MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
   MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist"
-  MACOSX_BUNDLE_GUI_IDENTIFIER "com.mycompany.${NAME}"
+  MACOSX_BUNDLE_GUI_IDENTIFIER "com.mycompany.app"
   MACOSX_BUNDLE_COPYRIGHT "(c) 2023 My Company"
+  INSTALL_RPATH @executable_path/../Frameworks
   RESOURCE "${STATIC_ASSETS}")
 
 # Copy DLL files on Windows to the target App build folder.
