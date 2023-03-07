@@ -1,4 +1,4 @@
-# Generate icon sets
+# Generate app icon sets
 
 ## macOS
 

@@ -19,7 +19,9 @@ set(CPACK_PACKAGE_DESCRIPTION_FILE ${CMAKE_CURRENT_LIST_DIR}/Description.txt)
 set(CPACK_RESOURCE_FILE_WELCOME ${CMAKE_CURRENT_LIST_DIR}/Welcome.txt)
 set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_LIST_DIR}/License.txt)
 set(CPACK_RESOURCE_FILE_README ${CMAKE_CURRENT_LIST_DIR}/Readme.txt)
-set(CPACK_PACKAGE_ICON ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns)
+
+# This option will change the mount drive icon used.
+# set(CPACK_PACKAGE_ICON ${CMAKE_CURRENT_LIST_DIR}/dmg/volume.icns)
 
 # macOS settings for DragNDrop generator
 set(CPACK_DMG_SLA_USE_RESOURCE_FILE_LICENSE OFF)
