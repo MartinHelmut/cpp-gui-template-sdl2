@@ -34,9 +34,10 @@ set(CPACK_NSIS_DISPLAY_NAME "My Company products")
 set(CPACK_NSIS_PACKAGE_NAME "My App")
 set(CPACK_NSIS_MANIFEST_DPI_AWARE true)
 set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL YES)
-# set(CPACK_NSIS_MUI_ICON ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
+set(CPACK_NSIS_MUI_ICON ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
+set(CPACK_NSIS_INSTALLED_ICON_NAME ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
 # set(CPACK_NSIS_MUI_UNIICON ${PROJECT_SOURCE_DIR}/src/assets/icons/uninstall_icon.ico)
-# set(CPACK_NSIS_INSTALLED_ICON_NAME ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
+
 # Install and uninstall start menu entries
 set(CPACK_NSIS_CREATE_ICONS_EXTRA
   "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\${PROJECT_NAME}.lnk' '$INSTDIR\\\\bin\\\\App.exe'")
