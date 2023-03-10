@@ -12,11 +12,13 @@ set(MACOSX_BUNDLE_ICON_FILE "icon")
 set(MACOSX_DEPLOYMENT_TARGET "13.1")
 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH YES)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
 
 add_executable(${NAME} WIN32 MACOSX_BUNDLE App/Main.cpp ${STATIC_ASSETS})
 
 install(TARGETS ${NAME}
   BUNDLE DESTINATION .
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   FRAMEWORK DESTINATION ${NAME}.app/Contents/Frameworks)
 
 # macOS package settings
@@ -31,12 +33,22 @@ set_target_properties(${NAME} PROPERTIES
   INSTALL_RPATH @executable_path/../Frameworks
   RESOURCE "${STATIC_ASSETS}")
 
-# Copy DLL files on Windows to the target App build folder.
 if (WIN32)
+  # Copy DLL files on Windows to the target App build folder.
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     $<TARGET_FILE:SDL2::SDL2>
     $<TARGET_FILE_DIR:${NAME}>)
+  install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+  # Copy assets into app bundle
+  add_custom_command(TARGET ${NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/assets
+    $<TARGET_FILE_DIR:${NAME}>/../share)
+
+  # Enable unicode for Windows Desktop Application
+  target_compile_definitions(${NAME} PRIVATE "UNICODE;_UNICODE")
 endif ()
 
 target_include_directories(${NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
