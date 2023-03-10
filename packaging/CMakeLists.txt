@@ -25,9 +25,23 @@ set(CPACK_RESOURCE_FILE_README ${CMAKE_CURRENT_LIST_DIR}/Readme.txt)
 
 # macOS settings for DragNDrop generator
 set(CPACK_DMG_SLA_USE_RESOURCE_FILE_LICENSE OFF)
-set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_CURRENT_SOURCE_DIR}/dmg/AppDMGBackground.tiff")
+set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_CURRENT_LIST_DIR}/dmg/AppDMGBackground.tiff")
 set(CPACK_DMG_DS_STORE_SETUP_SCRIPT "${CMAKE_CURRENT_LIST_DIR}/dmg/AppDMGSetup.scpt")
 set(CPACK_DMG_VOLUME_NAME "${CMAKE_PROJECT_NAME}")
+
+# Windows settings for NSIS generator
+set(CPACK_NSIS_DISPLAY_NAME "My Company products")
+set(CPACK_NSIS_PACKAGE_NAME "My App")
+set(CPACK_NSIS_MANIFEST_DPI_AWARE true)
+set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL YES)
+# set(CPACK_NSIS_MUI_ICON ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
+# set(CPACK_NSIS_MUI_UNIICON ${PROJECT_SOURCE_DIR}/src/assets/icons/uninstall_icon.ico)
+# set(CPACK_NSIS_INSTALLED_ICON_NAME ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
+# Install and uninstall start menu entries
+set(CPACK_NSIS_CREATE_ICONS_EXTRA
+  "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\${PROJECT_NAME}.lnk' '$INSTDIR\\\\bin\\\\App.exe'")
+set(CPACK_NSIS_DELETE_ICONS_EXTRA
+  "Delete '$SMPROGRAMS\\\\$START_MENU\\\\${PROJECT_NAME}.lnk'")
 
 if (NOT WIN32)
   set(CMAKE_INSTALL_PREFIX "/opt/mycompany.com/${PROJECT_NAME}")
@@ -35,7 +49,7 @@ endif ()
 
 # Generator selection per platform
 if (WIN32)
-  set(CPACK_GENERATOR ZIP WIX)
+  set(CPACK_GENERATOR ZIP NSIS)
 elseif (APPLE)
   set(CPACK_GENERATOR TGZ DragNDrop)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
