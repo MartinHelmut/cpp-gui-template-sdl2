@@ -61,9 +61,11 @@ ExitStatus App::Application::run() {
   const float font_size{18.0F * font_scaling_factor};
   std::string font_path{SDL_GetBasePath()};
   APP_DEBUG("Base path: {}", font_path);
-  // assets/fonts/ is only for Windows right now. Would be nice to have the folder
-  // in macOS as well to have one file path.
+#ifdef __APPLE__
+  font_path.append("Manrope.ttf");
+#else
   font_path.append("../share/fonts/Manrope.ttf");
+#endif
 
   io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
   io.FontDefault = io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
