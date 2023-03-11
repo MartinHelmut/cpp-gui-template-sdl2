@@ -11,14 +11,30 @@ iconutil -c icns icon.iconset
 
 ## Windows
 
-To create `.ico` files ImageMagick is used. From inside the `src/assets/icons` folder run:
+### App and install icon
+
+To create the `icon.ico` file ImageMagick is used. From inside the `src/assets/icons` folder run:
 
 ```shell
-convert icon.iconset/icon_16x16.png icon.iconset/icon_32x32.png icon.iconset/icon_64x64.png icon.iconset/icon_128x128.png icon.iconset/icon_256x256.png icon.iconset/icon_512x512.png icon.ico
+convert windows/icon_16x16.png windows/icon_32x32.png windows/icon_64x64.png windows/icon_128x128.png windows/icon_256x256.png windows/icon_512x512.png icon.ico
 ```
 
 Verify that the `icon.ico` was successfully created:
 
 ```shell
 identify icon.ico
+```
+
+### Uninstall icon
+
+To create the `uninstall_icon.ico` file ImageMagick is used. From inside the `src/assets/icons` folder run:
+
+```shell
+convert windows/uninstall_icon_16x16.png windows/uninstall_icon_32x32.png windows/uninstall_icon_64x64.png windows/uninstall_icon_128x128.png windows/uninstall_icon_256x256.png windows/uninstall_icon_512x512.png uninstall_icon.ico
+```
+
+Verify that the `uninstall_icon.ico` was successfully created:
+
+```shell
+identify uninstall_icon.ico
 ```
