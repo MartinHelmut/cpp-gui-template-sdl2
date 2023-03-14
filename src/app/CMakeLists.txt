@@ -4,6 +4,7 @@ include(${PROJECT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 
 set(STATIC_ASSETS
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico
+  ${PROJECT_SOURCE_DIR}/src/app/app.rc
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
   ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
@@ -45,7 +46,7 @@ if (WIN32)
     $<TARGET_FILE_DIR:${NAME}>/../share)
 
   # For CPack:
-  install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets DESTINATION ${CMAKE_INSTALL_DATADIR})
+  install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
 elseif (APPLE)
   # XCode generates build directories with build types inside.
   if ("${CMAKE_GENERATOR}" STREQUAL "Xcode")

@@ -59,12 +59,13 @@ ExitStatus App::Application::run() {
   // ImGUI font
   const float font_scaling_factor{m_window->get_scale()};
   const float font_size{18.0F * font_scaling_factor};
-  std::string font_path{SDL_GetBasePath()};
+  const std::string base_path{SDL_GetBasePath()};
+  std::string font_path{base_path};
   APP_DEBUG("Base path: {}", font_path);
 #ifdef __APPLE__
   font_path.append("Manrope.ttf");
 #else
-  font_path.append("../share/fonts/Manrope.ttf");
+  font_path.append(R"(..\share\fonts\Manrope.ttf)");
 #endif
 
   io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
@@ -112,6 +113,7 @@ ExitStatus App::Application::run() {
         }
         if (ImGui::BeginMenu("View")) {
           ImGui::MenuItem("Some Panel", nullptr, &m_show_some_panel);
+          ImGui::MenuItem("Debug Panel", nullptr, &m_show_debug_panel);
           ImGui::EndMenu();
         }
 
@@ -122,6 +124,18 @@ ExitStatus App::Application::run() {
       if (m_show_some_panel) {
         ImGui::Begin("Some panel", &m_show_some_panel);
         ImGui::Text("Hello World");
+        ImGui::End();
+      }
+
+      // Debug panel
+      if (m_show_debug_panel) {
+        ImGui::Begin("Debug panel", &m_show_debug_panel);
+        ImGui::Text("User config path: %s", user_config_path.c_str());
+        ImGui::Text("Base path: %s", base_path.c_str());
+        ImGui::Separator();
+        ImGui::Text("Font path: %s", font_path.c_str());
+        ImGui::Text("Font scaling factor: %f", font_scaling_factor);
+        ImGui::Text("Font size: %f", font_size);
         ImGui::End();
       }
     }

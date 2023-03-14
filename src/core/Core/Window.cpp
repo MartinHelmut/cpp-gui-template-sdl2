@@ -12,7 +12,7 @@ namespace App {
 Window::Window(const Settings& settings) {
   APP_PROFILE_FUNCTION();
 
-  auto window_flags{static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
+  const auto window_flags{static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
   constexpr int window_center_flag{SDL_WINDOWPOS_CENTERED};
 
   m_window = SDL_CreateWindow(settings.title.c_str(),
