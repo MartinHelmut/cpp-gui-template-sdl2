@@ -6,7 +6,7 @@ To properly support Retina displays, a TIFF with a high DPI version needs to be 
 
 ```shell
 tiffutil \
-  -cathidpicheck packaging/dmg/background-set/AppDMGBackground.tiff \
-  packaging/dmg/background-set/AppDMGBackground@2x.tiff \
+  -cathidpicheck packaging/dmg/resources/AppDMGBackground.tiff \
+  packaging/dmg/resources/AppDMGBackground@2x.tiff \
   -out packaging/dmg/AppDMGBackground.tiff
 ```

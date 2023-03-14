@@ -21,8 +21,4 @@ set_project_warnings(project_warnings)
 
 add_subdirectory(vendor)
 add_subdirectory(src)
-
-# Add packaging configuration for distribution.
-if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  add_subdirectory(packaging)
-endif ()
+add_subdirectory(packaging)

@@ -30,18 +30,18 @@ set(CPACK_DMG_DS_STORE_SETUP_SCRIPT "${CMAKE_CURRENT_LIST_DIR}/dmg/AppDMGSetup.s
 set(CPACK_DMG_VOLUME_NAME "${CMAKE_PROJECT_NAME}")
 
 # Windows settings for NSIS generator
-set(CPACK_NSIS_DISPLAY_NAME "My Company products")
+set(CPACK_NSIS_DISPLAY_NAME "My App")
 set(CPACK_NSIS_PACKAGE_NAME "My App")
 set(CPACK_NSIS_MANIFEST_DPI_AWARE true)
 set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL YES)
 set(CPACK_NSIS_MUI_ICON ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
 set(CPACK_NSIS_INSTALLED_ICON_NAME ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico)
-set(CPACK_NSIS_MUI_UNIICON ${PROJECT_SOURCE_DIR}/src/assets/icons/uninstall_icon.ico)
-set(CPACK_NSIS_MUI_HEADERIMAGE ${PROJECT_SOURCE_DIR}/src\\\\assets\\\\icons\\\\nsis_header.bmp)
-set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP ${PROJECT_SOURCE_DIR}/src\\\\assets\\\\icons\\\\nsis_install_welcome.bmp)
-set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP ${PROJECT_SOURCE_DIR}/src\\\\assets\\\\icons\\\\nsis_uninstall_welcome.bmp)
+set(CPACK_NSIS_MUI_UNIICON ${CMAKE_CURRENT_LIST_DIR}/nsis/uninstall_icon.ico)
+set(CPACK_NSIS_MUI_HEADERIMAGE ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_header.bmp)
+set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_install_welcome.bmp)
+set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_uninstall_welcome.bmp)
 
-# Install and uninstall start menu entries on Windows
+# Define how to install and uninstall start menu entries on Windows
 set(CPACK_NSIS_CREATE_ICONS_EXTRA
   "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\${PROJECT_NAME}.lnk' '$INSTDIR\\\\bin\\\\App.exe'")
 set(CPACK_NSIS_DELETE_ICONS_EXTRA
