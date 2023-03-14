@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
+ * Copyright (c) 2022-2023 Martin Helmut Fieber <info@martin-fieber.se>
  */
 
 #pragma once
@@ -40,6 +40,7 @@ class Application {
   bool m_running{true};
   bool m_minimized{false};
   bool m_show_some_panel{true};
+  bool m_show_debug_panel{false};
 };
 
 }  // namespace App
