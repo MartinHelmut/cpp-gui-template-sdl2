@@ -41,8 +41,8 @@ identify uninstall_icon.ico
 
 ### NSIS installer images
 
-The NSIS installer uses `.bmp` files for the UI images. To convert the appropriate images to `.bmp` files run the following command inside the `src/assets/icons` folder.
+The NSIS installer uses `.bmp` files for the UI images. Specifically BPM Windows 3.x format is used. To convert the appropriate images to `.bmp` files run the following command inside the `src/assets/icons` folder.
 
 ```shell
-convert windows/nsis_header.png nsis_header.bmp && convert windows/nsis_install_welcome.png nsis_install_welcome.bmp && convert windows/nsis_uninstall_welcome.png nsis_uninstall_welcome.bmp
+convert windows/nsis_header.png BMP3:nsis_header.bmp && convert windows/nsis_install_welcome.png BMP3:nsis_install_welcome.bmp && convert windows/nsis_uninstall_welcome.png BMP3:nsis_uninstall_welcome.bmp
 ```
