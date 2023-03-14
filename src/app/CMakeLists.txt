@@ -2,19 +2,13 @@ set(NAME "App")
 
 include(${PROJECT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 
-if (WIN32)
-  set(STATIC_ASSETS
-    ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico
-    ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
-elseif(APPLE)
-  set(STATIC_ASSETS
-    ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
-    ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
-else()
-  set(STATIC_ASSETS ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
-  endif()
+set(STATIC_ASSETS
+  ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico
+  ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
+  ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
-set_source_files_properties(${STATIC_ASSETS} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+set_source_files_properties(${STATIC_ASSETS}
+  PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 
 # Info.plist file settings
 set(MACOSX_EXECUTABLE_NAME ${NAME})
@@ -30,20 +24,27 @@ install(TARGETS ${NAME}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 if (WIN32)
+  # Use main entry for Windows GUI app.
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
 
   # Copy DLL files on Windows to the target App build folder.
+  # For dev:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     $<TARGET_FILE:SDL2::SDL2>
     $<TARGET_FILE_DIR:${NAME}>)
+
+  # For CPack:
   install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${CMAKE_INSTALL_BINDIR})
 
   # Copy assets into app bundle
+  # For dev:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/src/assets
     $<TARGET_FILE_DIR:${NAME}>/../share)
+
+  # For CPack:
   install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets DESTINATION ${CMAKE_INSTALL_DATADIR})
 elseif (APPLE)
   # XCode generates build directories with build types inside.
@@ -59,13 +60,13 @@ elseif (APPLE)
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     $<TARGET_FILE:SDL2::SDL2>
     ${APP_BUNDLE_PATH}/Contents/Frameworks/$<TARGET_FILE_NAME:SDL2::SDL2>)
+
   # For CPack:
   install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${APP_BUNDLE_PATH}/Contents/Frameworks/)
 endif ()
 
-string(TIMESTAMP CURR_YEAR "%Y")
-
 # macOS package settings
+string(TIMESTAMP CURR_YEAR "%Y")
 set_target_properties(${NAME} PROPERTIES
   XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
   MACOSX_BUNDLE_BUNDLE_VERSION "${BUILD_VERSION}"
