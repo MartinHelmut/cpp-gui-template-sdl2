@@ -47,14 +47,14 @@ set(CPACK_NSIS_CREATE_ICONS_EXTRA
 set(CPACK_NSIS_DELETE_ICONS_EXTRA
   "Delete '$SMPROGRAMS\\\\$START_MENU\\\\${PROJECT_NAME}.lnk'")
 
-if (NOT WIN32)
+if (NOT CMAKE_SYSTEM_NAME STREQUAL "Windows")
   set(CMAKE_INSTALL_PREFIX "/opt/mycompany.com/${PROJECT_NAME}")
 endif ()
 
 # Generator selection per platform
-if (WIN32)
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   set(CPACK_GENERATOR ZIP NSIS)
-elseif (APPLE)
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   set(CPACK_GENERATOR TGZ DragNDrop)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   set(CPACK_GENERATOR TGZ RPM)
