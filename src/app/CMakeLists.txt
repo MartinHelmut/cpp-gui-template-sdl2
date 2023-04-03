@@ -5,6 +5,7 @@ include(${PROJECT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 set(STATIC_ASSETS
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico
   ${PROJECT_SOURCE_DIR}/src/app/app.rc
+  ${PROJECT_SOURCE_DIR}/src/app/App.manifest
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
   ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
