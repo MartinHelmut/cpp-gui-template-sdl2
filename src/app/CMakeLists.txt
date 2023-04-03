@@ -29,23 +29,23 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
 
   # Copy DLL files on Windows to the target App build folder.
-  # For dev:
+  # For development:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     $<TARGET_FILE:SDL2::SDL2>
     $<TARGET_FILE_DIR:${NAME}>)
 
-  # For CPack:
+  # For distribution:
   install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${CMAKE_INSTALL_BINDIR})
 
   # Copy assets into app bundle
-  # For dev:
+  # For development:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/src/assets
     $<TARGET_FILE_DIR:${NAME}>/../share)
 
-  # For CPack:
+  # For distribution:
   install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   # XCode generates build directories with build types inside.
@@ -56,13 +56,13 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   endif ()
 
   # Get dynamic SDL2 lib into Frameworks folder in app bundle.
-  # For dev:
+  # For development:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
     $<TARGET_FILE:SDL2::SDL2>
     ${APP_BUNDLE_PATH}/Contents/Frameworks/$<TARGET_FILE_NAME:SDL2::SDL2>)
 
-  # For CPack:
+  # For distribution:
   install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${APP_BUNDLE_PATH}/Contents/Frameworks/)
 endif ()
 
