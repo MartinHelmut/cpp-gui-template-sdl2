@@ -66,6 +66,9 @@ ExitStatus App::Application::run() {
   io.FontDefault = io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
   io.FontGlobalScale = 1.0F / font_scaling_factor;
 
+  // ImGuiStyle& style{ImGui::GetStyle()};
+  // style.ScaleAllSizes(font_scaling_factor);
+
   // Setup Platform/Renderer backends
   ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_native_window(), m_window->get_native_renderer());
   ImGui_ImplSDLRenderer_Init(m_window->get_native_renderer());
