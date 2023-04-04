@@ -14,12 +14,16 @@ Window::Window(const Settings& settings) {
 
   const auto window_flags{static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
   constexpr int window_center_flag{SDL_WINDOWPOS_CENTERED};
+  const float scale{get_scale()};
+
+  const int window_dpi_scaled_width{static_cast<int>(settings.width * scale)};
+  const int window_dpi_scaled_height{static_cast<int>(settings.height * scale)};
 
   m_window = SDL_CreateWindow(settings.title.c_str(),
       window_center_flag,
       window_center_flag,
-      settings.width,
-      settings.height,
+      window_dpi_scaled_width,
+      window_dpi_scaled_height,
       window_flags);
 
   auto renderer_flags{
@@ -35,8 +39,8 @@ Window::Window(const Settings& settings) {
   SDL_GetRendererInfo(m_renderer, &info);
   APP_DEBUG("Current SDL_Renderer: {}", info.name);
 
-  const float scale{get_scale()};
-  SDL_RenderSetScale(m_renderer, scale, scale);
+  // Don't render scale on Windows.
+  // SDL_RenderSetScale(m_renderer, scale, scale);
 }
 
 Window::~Window() {
@@ -47,17 +51,19 @@ Window::~Window() {
 }
 
 float Window::get_scale() const {
-  int window_width{0};
-  int window_height{0};
-  SDL_GetWindowSize(m_window, &window_width, &window_height);
+  const float default_dpi =
+#ifdef __APPLE__
+      72.0F;
+#elif defined(_WIN32)
+      96.0F;
+#endif
 
-  int render_output_width{0};
-  int render_output_height{0};
-  SDL_GetRendererOutputSize(m_renderer, &render_output_width, &render_output_height);
+  float dpi{default_dpi};
+  constexpr int display_index{0};
 
-  const float scale_x{static_cast<float>(render_output_width) / static_cast<float>(window_width)};
+  SDL_GetDisplayDPI(display_index, nullptr, &dpi, nullptr);
 
-  return scale_x;
+  return dpi / default_dpi;
 }
 
 SDL_Window* Window::get_native_window() const {

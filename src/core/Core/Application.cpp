@@ -60,14 +60,12 @@ ExitStatus App::Application::run() {
   // ImGUI font
   const float font_scaling_factor{m_window->get_scale()};
   const float font_size{18.0F * font_scaling_factor};
-  const std::string font_path{Resources::font_path("Manrope.ttf")};
+  const std::string font_path{Resources::font_path("Manrope.ttf").generic_string()};
 
   io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
   io.FontDefault = io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
-  io.FontGlobalScale = 1.0F / font_scaling_factor;
-
-  // ImGuiStyle& style{ImGui::GetStyle()};
-  // style.ScaleAllSizes(font_scaling_factor);
+  // Don´t scale on Windows
+  // io.FontGlobalScale = 1.0F / font_scaling_factor;
 
   // Setup Platform/Renderer backends
   ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_native_window(), m_window->get_native_renderer());
