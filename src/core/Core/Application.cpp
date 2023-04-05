@@ -8,6 +8,7 @@
 #include <backends/imgui_impl_sdlrenderer.h>
 #include <imgui.h>
 
+#include "Core/DPIHandler.hpp"
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Resources.hpp"
 
@@ -58,14 +59,13 @@ ExitStatus App::Application::run() {
   io.IniFilename = imgui_ini_filename.c_str();
 
   // ImGUI font
-  const float font_scaling_factor{m_window->get_scale()};
+  const float font_scaling_factor{DPIHandler::get_scale()};
   const float font_size{18.0F * font_scaling_factor};
   const std::string font_path{Resources::font_path("Manrope.ttf").generic_string()};
 
   io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
   io.FontDefault = io.Fonts->AddFontFromFileTTF(font_path.c_str(), font_size);
-  // Don´t scale on Windows
-  // io.FontGlobalScale = 1.0F / font_scaling_factor;
+  DPIHandler::set_global_font_scaling(&io);
 
   // Setup Platform/Renderer backends
   ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_native_window(), m_window->get_native_renderer());
@@ -128,8 +128,9 @@ ExitStatus App::Application::run() {
         ImGui::Text("User config path: %s", user_config_path.c_str());
         ImGui::Separator();
         ImGui::Text("Font path: %s", font_path.c_str());
-        ImGui::Text("Font scaling factor: %f", font_scaling_factor);
         ImGui::Text("Font size: %f", font_size);
+        ImGui::Text("Global font scaling %f", io.FontGlobalScale);
+        ImGui::Text("UI scaling factor: %f", font_scaling_factor);
         ImGui::End();
       }
     }
