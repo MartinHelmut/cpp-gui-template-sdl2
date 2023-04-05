@@ -1,13 +1,9 @@
-/*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
- */
-
 #pragma once
 
-#include <memory>
+#include <spdlog/fmt/ostr.h>
+#include <spdlog/spdlog.h>
 
-#include "spdlog/fmt/ostr.h"
-#include "spdlog/spdlog.h"
+#include <memory>
 
 namespace App {
 

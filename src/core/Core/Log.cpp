@@ -1,13 +1,9 @@
-/*
- * Copyright (c) 2022-2023 Martin Helmut Fieber <info@martin-fieber.se>
- */
-
 #include "Log.hpp"
 
-#include <vector>
+#include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
-#include "spdlog/sinks/basic_file_sink.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include <vector>
 
 namespace App {
 

@@ -1,10 +1,6 @@
-/*
- * Copyright (c) 2023 Martin Helmut Fieber <info@martin-fieber.se>
- */
+#include "Core/Resources.hpp"
 
 #include <SDL.h>
-
-#include "Core/Resources.hpp"
 
 namespace App {
 

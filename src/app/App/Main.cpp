@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
- */
-
 #define SDL_MAIN_HANDLED
 
 #include "Core/Application.hpp"

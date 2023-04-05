@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2022 Martin Helmut Fieber <info@martin-fieber.se>
- */
-
 #pragma once
 
 #include <SDL.h>
