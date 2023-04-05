@@ -4,12 +4,13 @@
 
 #pragma once
 
+#include <SDL.h>
+
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "Core/Window.hpp"
-#include "SDL.h"
 
 namespace App {
 

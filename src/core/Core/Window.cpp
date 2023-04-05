@@ -4,6 +4,7 @@
 
 #include "Window.hpp"
 
+#include "Core/DPIHandler.hpp"
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Log.hpp"
 
@@ -12,12 +13,19 @@ namespace App {
 Window::Window(const Settings& settings) {
   APP_PROFILE_FUNCTION();
 
-  const auto window_flags{static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
+  const auto window_flags{
+      static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
   constexpr int window_center_flag{SDL_WINDOWPOS_CENTERED};
-  const float scale{get_scale()};
 
+#ifdef __APPLE__
+  const int window_dpi_scaled_width{static_cast<int>(settings.width)};
+  const int window_dpi_scaled_height{static_cast<int>(settings.height)};
+#else
+  const float scale{DPIHandler::get_scale()};
+  APP_DEBUG("DPI window scaling factor is: {}", scale);
   const int window_dpi_scaled_width{static_cast<int>(settings.width * scale)};
   const int window_dpi_scaled_height{static_cast<int>(settings.height * scale)};
+#endif
 
   m_window = SDL_CreateWindow(settings.title.c_str(),
       window_center_flag,
@@ -37,10 +45,9 @@ Window::Window(const Settings& settings) {
 
   SDL_RendererInfo info;
   SDL_GetRendererInfo(m_renderer, &info);
-  APP_DEBUG("Current SDL_Renderer: {}", info.name);
+  DPIHandler::set_render_scale(m_renderer);
 
-  // Don't render scale on Windows.
-  // SDL_RenderSetScale(m_renderer, scale, scale);
+  APP_DEBUG("Current SDL_Renderer: {}", info.name);
 }
 
 Window::~Window() {
@@ -50,20 +57,20 @@ Window::~Window() {
   SDL_DestroyWindow(m_window);
 }
 
-float Window::get_scale() const {
-  const float default_dpi =
-#ifdef __APPLE__
-      72.0F;
-#elif defined(_WIN32)
-      96.0F;
-#endif
+float Window::get_legacy_scale() const {
+  // This is the SDL2 proposed way of getting a DPI scale value.
+  // See: https://wiki.libsdl.org/SDL2/SDL_GetDisplayDPI
+  int window_width{0};
+  int window_height{0};
+  SDL_GetWindowSize(m_window, &window_width, &window_height);
 
-  float dpi{default_dpi};
-  constexpr int display_index{0};
+  int render_output_width{0};
+  int render_output_height{0};
+  SDL_GetRendererOutputSize(m_renderer, &render_output_width, &render_output_height);
 
-  SDL_GetDisplayDPI(display_index, nullptr, &dpi, nullptr);
+  const float scale_x{static_cast<float>(render_output_width) / static_cast<float>(window_width)};
 
-  return dpi / default_dpi;
+  return scale_x;
 }
 
 SDL_Window* Window::get_native_window() const {
