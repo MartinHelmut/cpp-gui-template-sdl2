@@ -13,15 +13,17 @@ Window::Window(const Settings& settings) {
       static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
   constexpr int window_center_flag{SDL_WINDOWPOS_CENTERED};
 
-#ifdef __APPLE__
-  const int window_dpi_scaled_width{static_cast<int>(settings.width)};
-  const int window_dpi_scaled_height{static_cast<int>(settings.height)};
-#else
+#ifdef WIN32
   const float scale{DPIHandler::get_scale()};
   APP_DEBUG("DPI window scaling factor is: {}", scale);
-  const int window_dpi_scaled_width{static_cast<int>(settings.width * scale)};
-  const int window_dpi_scaled_height{static_cast<int>(settings.height * scale)};
+  const int window_dpi_scaled_width{static_cast<int>(static_cast<float>(settings.width) * scale)};
+  const int window_dpi_scaled_height{static_cast<int>(static_cast<float>(settings.height) * scale)};
+#else
+  const int window_dpi_scaled_width{static_cast<int>(settings.width)};
+  const int window_dpi_scaled_height{static_cast<int>(settings.height)};
 #endif
+
+  APP_DEBUG("Window DPI scaled size: {} x {}", window_dpi_scaled_width, window_dpi_scaled_height);
 
   m_window = SDL_CreateWindow(settings.title.c_str(),
       window_center_flag,

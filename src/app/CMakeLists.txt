@@ -17,7 +17,9 @@ set(MACOSX_EXECUTABLE_NAME ${NAME})
 set(MACOSX_BUNDLE_ICON_FILE "icon")
 set(MACOSX_DEPLOYMENT_TARGET "13.1")
 
-set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+if (NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+endif()
 
 add_executable(${NAME} WIN32 MACOSX_BUNDLE App/Main.cpp ${STATIC_ASSETS})
 
@@ -45,6 +47,26 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/src/assets
     $<TARGET_FILE_DIR:${NAME}>/../share)
+
+  # For distribution:
+  install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  # Copy .so files on Linux to the target App build folder.
+  # For development:
+  add_custom_command(TARGET ${NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_FILE:SDL2::SDL2>
+    $<TARGET_FILE_DIR:${NAME}>)
+
+  # For distribution:
+  install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+  # Copy assets into app bundle
+  # For development:
+  add_custom_command(TARGET ${NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/assets
+    $<TARGET_FILE_DIR:${NAME}>/share)
 
   # For distribution:
   install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
