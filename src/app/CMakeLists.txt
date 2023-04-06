@@ -66,7 +66,7 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/src/assets
-    $<TARGET_FILE_DIR:${NAME}>/share)
+    $<TARGET_FILE_DIR:${NAME}>/../share)
 
   # For distribution:
   install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})

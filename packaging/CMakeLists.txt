@@ -41,13 +41,19 @@ set(CPACK_NSIS_MUI_HEADERIMAGE ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_header.bmp
 set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_install_welcome.bmp)
 set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_uninstall_welcome.bmp)
 
+# Linux DEB settings
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libsdl2-2.0-0")
+# Section list: https://packages.debian.org/unstable/
+set(CPACK_DEBIAN_PACKAGE_SECTION Miscellaneous)
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Maintainer Name")
+
 # Define how to install and uninstall start menu entries on Windows
 set(CPACK_NSIS_CREATE_ICONS_EXTRA
   "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\${PROJECT_NAME}.lnk' '$INSTDIR\\\\bin\\\\App.exe'")
 set(CPACK_NSIS_DELETE_ICONS_EXTRA
   "Delete '$SMPROGRAMS\\\\$START_MENU\\\\${PROJECT_NAME}.lnk'")
 
-if (NOT CMAKE_SYSTEM_NAME STREQUAL "Windows")
+if (NOT WIN32 AND CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   set(CMAKE_INSTALL_PREFIX "/opt/mycompany.com/${PROJECT_NAME}")
 endif ()
 
@@ -57,7 +63,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   set(CPACK_GENERATOR TGZ DragNDrop)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-  set(CPACK_GENERATOR TGZ RPM)
+  set(CPACK_GENERATOR TGZ DEB)
 else ()
   set(CPACK_GENERATOR TGZ)
 endif ()
