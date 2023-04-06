@@ -21,6 +21,6 @@ set_project_warnings(project_warnings)
 
 enable_testing()
 
+add_subdirectory(packaging)
 add_subdirectory(vendor)
 add_subdirectory(src)
-add_subdirectory(packaging)
