@@ -1,5 +1,7 @@
 #include "Core/DPIHandler.hpp"
 
+#include <cmath>
+
 namespace App {
 
 float DPIHandler::get_scale() {
