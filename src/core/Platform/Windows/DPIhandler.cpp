@@ -12,6 +12,13 @@ float DPIHandler::get_scale() {
   return dpi / default_dpi;
 }
 
+WindowSize DPIHandler::get_dpi_aware_window_size(const Window::Settings& settings) {
+  const float scale{DPIHandler::get_scale()};
+  const int width{static_cast<int>(static_cast<float>(settings.width) * scale)};
+  const int height{static_cast<int>(static_cast<float>(settings.height) * scale)};
+  return {width, height};
+}
+
 void DPIHandler::set_render_scale([[maybe_unused]] SDL_Renderer* renderer) {
   // do nothing
 }

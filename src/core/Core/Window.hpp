@@ -22,8 +22,6 @@ class Window {
   Window& operator=(Window other) = delete;
   Window& operator=(Window&& other) = delete;
 
-  [[nodiscard]] float get_legacy_scale() const;
-
   [[nodiscard]] SDL_Window* get_native_window() const;
   [[nodiscard]] SDL_Renderer* get_native_renderer() const;
 

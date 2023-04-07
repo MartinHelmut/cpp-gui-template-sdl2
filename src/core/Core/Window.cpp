@@ -11,25 +11,13 @@ Window::Window(const Settings& settings) {
 
   const auto window_flags{
       static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
-  constexpr int window_center_flag{SDL_WINDOWPOS_CENTERED};
-
-#ifdef WIN32
-  const float scale{DPIHandler::get_scale()};
-  APP_DEBUG("DPI window scaling factor is: {}", scale);
-  const int window_dpi_scaled_width{static_cast<int>(static_cast<float>(settings.width) * scale)};
-  const int window_dpi_scaled_height{static_cast<int>(static_cast<float>(settings.height) * scale)};
-#else
-  const int window_dpi_scaled_width{static_cast<int>(settings.width)};
-  const int window_dpi_scaled_height{static_cast<int>(settings.height)};
-#endif
-
-  APP_DEBUG("Window DPI scaled size: {} x {}", window_dpi_scaled_width, window_dpi_scaled_height);
+  const WindowSize size{DPIHandler::get_dpi_aware_window_size(settings)};
 
   m_window = SDL_CreateWindow(settings.title.c_str(),
-      window_center_flag,
-      window_center_flag,
-      window_dpi_scaled_width,
-      window_dpi_scaled_height,
+      SDL_WINDOWPOS_CENTERED,
+      SDL_WINDOWPOS_CENTERED,
+      size.width,
+      size.height,
       window_flags);
 
   auto renderer_flags{
@@ -53,22 +41,6 @@ Window::~Window() {
 
   SDL_DestroyRenderer(m_renderer);
   SDL_DestroyWindow(m_window);
-}
-
-float Window::get_legacy_scale() const {
-  // This is the SDL2 proposed way of getting a DPI scale value.
-  // See: https://wiki.libsdl.org/SDL2/SDL_GetDisplayDPI
-  int window_width{0};
-  int window_height{0};
-  SDL_GetWindowSize(m_window, &window_width, &window_height);
-
-  int render_output_width{0};
-  int render_output_height{0};
-  SDL_GetRendererOutputSize(m_renderer, &render_output_width, &render_output_height);
-
-  const float scale_x{static_cast<float>(render_output_width) / static_cast<float>(window_width)};
-
-  return scale_x;
 }
 
 SDL_Window* Window::get_native_window() const {
