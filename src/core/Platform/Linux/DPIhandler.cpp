@@ -1,7 +1,5 @@
 #include "Core/DPIHandler.hpp"
 
-#include <cmath>
-
 namespace App {
 
 float DPIHandler::get_scale() {
@@ -12,6 +10,10 @@ float DPIHandler::get_scale() {
   SDL_GetDisplayDPI(display_index, nullptr, &dpi, nullptr);
 
   return dpi / default_dpi;
+}
+
+WindowSize DPIHandler::get_dpi_aware_window_size(const Window::Settings& settings) {
+  return {settings.width, settings.height};
 }
 
 void DPIHandler::set_render_scale([[maybe_unused]] SDL_Renderer* renderer) {
