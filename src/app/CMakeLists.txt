@@ -4,8 +4,8 @@ include(${PROJECT_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 
 set(STATIC_ASSETS
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.ico
-  ${PROJECT_SOURCE_DIR}/src/app/app.rc
-  ${PROJECT_SOURCE_DIR}/src/app/App.manifest
+  ${PROJECT_SOURCE_DIR}/src/app/Manifests/app.rc
+  ${PROJECT_SOURCE_DIR}/src/app/Manifests/App.manifest
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
   ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
@@ -17,9 +17,10 @@ set(MACOSX_EXECUTABLE_NAME ${NAME})
 set(MACOSX_BUNDLE_ICON_FILE "icon")
 set(MACOSX_DEPLOYMENT_TARGET "13.1")
 
+# @todo: Should actually not be excluded on Linux.
 if (NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
   set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
-endif()
+endif ()
 
 add_executable(${NAME} WIN32 MACOSX_BUNDLE App/Main.cpp ${STATIC_ASSETS})
 
@@ -30,28 +31,10 @@ install(TARGETS ${NAME}
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   # Use main entry for Windows GUI app.
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
+endif ()
 
-  # Copy DLL files on Windows to the target App build folder.
-  # For development:
-  add_custom_command(TARGET ${NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    $<TARGET_FILE:SDL2::SDL2>
-    $<TARGET_FILE_DIR:${NAME}>)
-
-  # For distribution:
-  install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${CMAKE_INSTALL_BINDIR})
-
-  # Copy assets into app bundle
-  # For development:
-  add_custom_command(TARGET ${NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/src/assets
-    $<TARGET_FILE_DIR:${NAME}>/../share)
-
-  # For distribution:
-  install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
-elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-  # Copy .so files on Linux to the target App build folder.
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  # Copy .dll/.so files on Windows/Linux to the target App build folder.
   # For development:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
@@ -95,7 +78,7 @@ set_target_properties(${NAME} PROPERTIES
   XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
   MACOSX_BUNDLE_BUNDLE_VERSION "${BUILD_VERSION}"
   MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
-  MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist"
+  MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Manifests/Info.plist"
   MACOSX_BUNDLE_GUI_IDENTIFIER "com.mycompany.app"
   MACOSX_BUNDLE_COPYRIGHT "(c) ${CURR_YEAR} My Company"
   INSTALL_RPATH @executable_path/../Frameworks
