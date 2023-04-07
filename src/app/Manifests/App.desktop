@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=App
+Comment=Base gui project setup.
+Exec=/path/to/executable
+Path=/path/to/executable
+Icon=/path/to/icon
+Terminal=false
+Type=Application
+Categories=Utility;Miscellaneous;
