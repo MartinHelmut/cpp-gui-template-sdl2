@@ -9,6 +9,14 @@ C++ gui project template with SDL2.
 
 ## Setup
 
+### Git LFS
+
+Some of the assets are stored through [Git Large File Storage (LFS)](https://git-lfs.com). It **needs to be installed
+before cloning** a repository using this template. In case it was installed after cloning, run `git lfs checkout`
+to get all LFS files.
+
+### CMake & Ninja
+
 The project uses [CMake](https://cmake.org) and [Ninja](https://ninja-build.org).
 
 Build the application in debug mode:
@@ -26,13 +34,13 @@ cd ./build/debug/src/app && ./App
 
 ## Distribution
 
-To create a distribution package CPack is used from a Release build.
+To create a distribution package CPack is used, e.g. from a Release build.
 
 ```shell
 cpack --config build/release/CPackConfig.cmake
 ```
 
-### Using Litr
+## Using Litr
 
 When using [Litr](https://github.com/krieselreihe/litr), the quick setup to build and run the application is:
 
