@@ -10,7 +10,7 @@ set(STATIC_ASSETS
   ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
 set_source_files_properties(${STATIC_ASSETS}
-  PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+  PROPERTIES MACOSX_PACKAGE_LOCATION ${CMAKE_INSTALL_DATADIR})
 
 # Info.plist file settings
 set(MACOSX_EXECUTABLE_NAME ${NAME})
@@ -49,7 +49,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/src/assets
-    $<TARGET_FILE_DIR:${NAME}>/../share)
+    ${CMAKE_INSTALL_DATADIR})
 
   # For distribution:
   install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
