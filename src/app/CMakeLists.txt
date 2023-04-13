@@ -79,7 +79,11 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
 
   # Linux app icon setup
-  install(FILES ${PROJECT_SOURCE_DIR}/src/app/Manifests/App.desktop
+  configure_file(
+    ${PROJECT_SOURCE_DIR}/src/app/Manifests/App.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/App.desktop
+    @ONLY)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/App.desktop
     DESTINATION share/applications)
   install(FILES ${PROJECT_SOURCE_DIR}/src/assets/icons/BaseAppIcon.png
     DESTINATION share/pixmaps)
