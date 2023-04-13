@@ -9,6 +9,12 @@ set(STATIC_ASSETS
   ${PROJECT_SOURCE_DIR}/src/assets/icons/icon.icns
   ${PROJECT_SOURCE_DIR}/src/assets/fonts/Manrope.ttf)
 
+# Linux app icon setup
+install(FILES ${PROJECT_SOURCE_DIR}/src/app/Manifests/App.desktop
+  DESTINATION share/applications)
+install(FILES ${PROJECT_SOURCE_DIR}/src/assets/icons/BaseAppIcon.png
+  DESTINATION share/pixmaps)
+
 set_source_files_properties(${STATIC_ASSETS}
   PROPERTIES MACOSX_PACKAGE_LOCATION ${CMAKE_INSTALL_DATADIR})
 
@@ -17,7 +23,6 @@ set(MACOSX_EXECUTABLE_NAME ${NAME})
 set(MACOSX_BUNDLE_ICON_FILE "icon")
 set(MACOSX_DEPLOYMENT_TARGET "13.1")
 
-# @todo: Should actually not be excluded on Linux.
 if (NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
   set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 endif ()
@@ -26,7 +31,9 @@ add_executable(${NAME} WIN32 MACOSX_BUNDLE App/Main.cpp ${STATIC_ASSETS})
 
 install(TARGETS ${NAME}
   BUNDLE DESTINATION .
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
   # Use main entry for Windows GUI app.
@@ -48,11 +55,11 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
   # For development:
   add_custom_command(TARGET ${NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/src/assets
-    ${CMAKE_INSTALL_DATADIR})
+    ${PROJECT_SOURCE_DIR}/src/assets
+    $<TARGET_FILE_DIR:${NAME}>/../share)
 
   # For distribution:
-  install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
+  install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_DATADIR})
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   # XCode generates build directories with build types inside.
   if ("${CMAKE_GENERATOR}" STREQUAL "Xcode")
