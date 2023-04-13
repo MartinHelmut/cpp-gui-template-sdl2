@@ -42,6 +42,7 @@ set(CPACK_NSIS_MUI_WELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\ns
 set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\nsis_uninstall_welcome.bmp)
 
 # Linux DEB settings
+set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libsdl2-2.0-0")
 # Section list: https://packages.debian.org/unstable/
 set(CPACK_DEBIAN_PACKAGE_SECTION Miscellaneous)
