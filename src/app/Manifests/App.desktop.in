@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=App
-GenericName=Base Application
+Name=@NAME@
+GenericName=@CMAKE_PROJECT_NAME@
 Comment=Base gui project setup.
-Exec=App
+Exec=@NAME@
 Icon=BaseAppIcon
 Type=Application
 Categories=Miscellaneous;
