@@ -24,7 +24,7 @@ struct ProfileResult {
 
 struct InstrumentationSession {
   const std::string name;
-  explicit InstrumentationSession(std::string name) : name(std::move(name)) {}
+  explicit InstrumentationSession(std::string session_name) : name(std::move(session_name)) {}
 };
 
 class Instrumentor {
