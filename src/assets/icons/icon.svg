@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+      <stop stop-color="#E0A1FF" offset="0%"></stop>
+      <stop stop-color="#772FFF" offset="100%"></stop>
+    </linearGradient>
+    <path
+      d="M167.938719,50 L344.061281,50 C385.071143,50 399.94231,54.2699781 414.934902,62.2881044 C429.927495,70.3062306 441.693769,82.072505 449.711896,97.0650976 C457.730022,112.05769 462,126.928857 462,167.938719 L462,344.061281 C462,385.071143 457.730022,399.94231 449.711896,414.934902 C441.693769,429.927495 429.927495,441.693769 414.934902,449.711896 C399.94231,457.730022 385.071143,462 344.061281,462 L167.938719,462 C126.928857,462 112.05769,457.730022 97.0650976,449.711896 C82.072505,441.693769 70.3062306,429.927495 62.2881044,414.934902 C54.2699781,399.94231 50,385.071143 50,344.061281 L50,167.938719 C50,126.928857 54.2699781,112.05769 62.2881044,97.0650976 C70.3062306,82.072505 82.072505,70.3062306 97.0650976,62.2881044 C112.05769,54.2699781 126.928857,50 167.938719,50 Z"
+      id="path-2"></path>
+    <filter x="-4.9%" y="-2.4%" width="109.7%" height="109.7%" filterUnits="objectBoundingBox" id="filter-3">
+      <feOffset dx="0" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+      <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+      <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix"
+                     in="shadowBlurOuter1"></feColorMatrix>
+    </filter>
+  </defs>
+  <g id="icon_512x512" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="App-Icon-Base-512x512">
+      <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+      <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+    </g>
+  </g>
+</svg>
