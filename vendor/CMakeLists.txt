@@ -3,7 +3,7 @@ include(FetchContent)
 FetchContent_Declare(
   doctest
   GIT_REPOSITORY "https://github.com/onqtam/doctest.git"
-  GIT_TAG v2.4.10
+  GIT_TAG v2.4.11
 )
 add_subdirectory(doctest)
 
@@ -17,14 +17,14 @@ add_subdirectory(fmt)
 FetchContent_Declare(
   imgui
   GIT_REPOSITORY "https://github.com/ocornut/imgui.git"
-  GIT_TAG f5c5a710aa38b91be39b1c219f3bb90e2e15df80 # Branch: docking, date: 06.03.2023
+  GIT_TAG 0ea3b87bd63ecbf359585b7c235839146e84dedb # Branch: docking, date: 13.04.2023
 )
 add_subdirectory(imgui)
 
 FetchContent_Declare(
   SDL2
   GIT_REPOSITORY "https://github.com/libsdl-org/SDL.git"
-  GIT_TAG release-2.26.3
+  GIT_TAG release-2.26.5
 )
 add_subdirectory(sdl)
 
