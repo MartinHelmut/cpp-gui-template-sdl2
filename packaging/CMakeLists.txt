@@ -43,6 +43,7 @@ set(CPACK_NSIS_MUI_UNWELCOMEFINISHPAGE_BITMAP ${CMAKE_CURRENT_LIST_DIR}/nsis\\\\
 
 # Linux DEB settings
 set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libsdl2-2.0-0")
 # Section list: https://packages.debian.org/unstable/
 set(CPACK_DEBIAN_PACKAGE_SECTION Miscellaneous)
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Maintainer Name")
