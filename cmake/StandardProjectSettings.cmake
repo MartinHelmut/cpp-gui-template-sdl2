@@ -25,5 +25,5 @@ endif ()
 
 option(DEBUG "Enable debug statements and asserts" OFF)
 if (DEBUG OR CMAKE_BUILD_TYPE STREQUAL "Debug")
-  add_compile_definitions(DEBUG APP_ENABLE_ASSERTS APP_PROFILE)
+  add_compile_definitions(DEBUG APP_PROFILE)
 endif ()
