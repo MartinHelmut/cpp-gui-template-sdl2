@@ -3,3 +3,6 @@ Testing/
 profile.json
 *-profile.json
 *.log
+
+# Will get generated in Linux for packaging.
+App.desktop
