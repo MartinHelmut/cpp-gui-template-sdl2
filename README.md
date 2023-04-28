@@ -1,58 +1,24 @@
 # Base GUI project setup with SDL2
 
-C++ gui project template with SDL2.
+C++ GUI project template with [SDL2](https://www.libsdl.org) and [Dear ImGUI](https://github.com/ocornut/imgui).
 
 ![Image of the example app.](example-app.png)
 
 **Remark:** The SDL2 renderer does not support multi-viewport and detached widgets. For this you can have a look at the
 [OpenGL version of this template](https://github.com/MartinHelmut/cpp-gui-template-sdl2-opengl).
 
-## Setup
+## How to get started
 
-### Git LFS
+After using this template to create your own repository, it is time to first run and then customize!
 
-Some of the assets are stored through [Git Large File Storage (LFS)](https://git-lfs.com). It **needs to be installed
-before cloning** a repository using this template. In case it was installed after cloning, run `git lfs checkout`
-to get all LFS files.
+- Start here: [Quick Start](docs/QuickStart.md)
+- Continue here: [Usage Guide](docs/README.md)
 
-### CMake & Ninja
+## Other versions
 
-The project uses [CMake](https://cmake.org) and [Ninja](https://ninja-build.org).
+If you want another version of this template, on using the template **check the box** to _"Include all branches"_, as every version is a separate branch. The following versions of this template are included:
 
-Build the application in debug mode:
-
-```shell
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -B build/debug
-ninja -C build/debug
-```
-
-Run the application:
-
-```shell
-cd ./build/debug/src/app && ./App
-```
-
-## Distribution
-
-To create a distribution package CPack is used, e.g. from a Release build.
-
-```shell
-cpack --config build/release/CPackConfig.cmake
-```
-
-## Using Litr
-
-When using [Litr](https://github.com/krieselreihe/litr), the quick setup to build and run the application is:
-
-```shell
-litr build,start
-```
-
-To create a package distribution run:
-
-```shell
-litr dist
-```
+- Version 1 - Older version without CPack
 
 ## Disclaimer
 
