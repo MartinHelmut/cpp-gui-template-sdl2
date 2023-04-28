@@ -4,7 +4,7 @@ include(cmake/UniversalAppleBuild.cmake)
 
 project(
   BasicGuiProjectSetup
-  DESCRIPTION "Base gui project setup."
+  DESCRIPTION "Base GUI project setup."
   VERSION 1.0.0
   LANGUAGES CXX)
 
