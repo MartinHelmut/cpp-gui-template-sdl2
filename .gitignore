@@ -1,4 +1,5 @@
 build/
+Testing/
 profile.json
 *-profile.json
 *.log
