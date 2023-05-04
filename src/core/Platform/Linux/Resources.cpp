@@ -7,7 +7,6 @@ namespace App {
 static const std::string BASE_PATH{SDL_GetBasePath()};
 
 std::filesystem::path Resources::resource_path(const std::filesystem::path& file_path) {
-  // @todo: Not yet fully verified.
   std::filesystem::path font_path{BASE_PATH};
   font_path /= "../share";
   font_path /= "fonts" / file_path;
