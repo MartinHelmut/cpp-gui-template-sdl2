@@ -1,8 +1,3 @@
-# Info.plist file settings
-set(MACOSX_EXECUTABLE_NAME ${NAME})
-set(MACOSX_BUNDLE_ICON_FILE "icon")
-set(MACOSX_DEPLOYMENT_TARGET "13.1")
-
 # XCode generates build directories with build types inside.
 if ("${CMAKE_GENERATOR}" STREQUAL "Xcode")
   set(APP_BUNDLE_PATH "${CMAKE_BUILD_TYPE}/${NAME}.app")
