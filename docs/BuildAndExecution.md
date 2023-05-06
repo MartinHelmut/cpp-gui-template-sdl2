@@ -80,6 +80,20 @@ Run on a built target, in this example **debug**:
 ./build/debug/src/app/App.app/Contents/MacOS/App
 ```
 
+Though, even better is to use **XCode as generator** to create app builds on macOS. Only difference in usage is running CMake with `-GXCode`. If `CMAKE_OSX_ARCHITECTURES` is not set, it will create universal binaries on M1/2 macs.
+
+To run a **debug** build created with XCode:
+
+```shell
+./build/xcode/src/app/Debug/App.app/Contents/MacOS/App
+```
+
+To run a **release** build created with XCode:
+
+```shell
+./build/xcode/src/app/Release/App.app/Contents/MacOS/App
+```
+
 ### Windows
 
 To run a **debug** build:

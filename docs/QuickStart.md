@@ -30,6 +30,14 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Release -B build/release
 cmake --build build/release
 ```
 
+On macOS XCode should be used as generator via `-GXCode`. For example creating a release build with XCode.
+
+```shell
+# Using XCode
+cmake -GXCode -DCMAKE_BUILD_TYPE=Release -B build/xcode
+cmake --build build/xcode
+```
+
 ## Execute
 
 When not running through an [IDE like CLion](https://www.jetbrains.com/clion), the built application can be run by directly executing the generated binary.
@@ -46,6 +54,18 @@ To run a **release** build:
 
 ```shell
 ./build/release/src/app/App.app/Contents/MacOS/App
+```
+
+To run a **debug** build created **with XCode**:
+
+```shell
+./build/xcode/src/app/Debug/App.app/Contents/MacOS/App
+```
+
+To run a **release** build created **with XCode**:
+
+```shell
+./build/xcode/src/app/Release/App.app/Contents/MacOS/App
 ```
 
 ### Windows
