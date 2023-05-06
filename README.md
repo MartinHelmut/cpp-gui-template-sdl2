@@ -18,7 +18,7 @@ After using this template to create your own repository, it is time to first run
 
 If you want another version of this template, on using the template **check the box** to _"Include all branches"_, as every version is a separate branch. The following versions of this template are included:
 
-- Version 1 - Older version without CPack
+- [Version 1](https://github.com/MartinHelmut/cpp-gui-template-sdl2/tree/version-1) - Older version without CPack
 
 ## Disclaimer
 
