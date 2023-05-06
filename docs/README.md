@@ -41,6 +41,7 @@ git lfs migrate import \
 git push --force
 git reflog expire --expire-unreachable=now --all
 git gc --prune=now
+mv .gitattributes_example .gitattributes
 ```
 
 ### CMake & Ninja
