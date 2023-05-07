@@ -16,6 +16,7 @@ This is the user guide for the template and how to adapt it to your own needs.
 - [Platform dependent code](PlatformCode.md)
 - [Application Icons](ApplicationIcons.md)
 - [Fonts](Fonts.md)
+- [High DPI support](HighDPISupport.md)
 
 ***
 
