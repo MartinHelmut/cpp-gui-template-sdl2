@@ -112,6 +112,16 @@ On any [generated build](#build) tests can be executed by using CTest, e.g. a De
 ctest --test-dir build/debug
 ```
 
+## Preview
+
+Here a preview of the app running on macOS, Windows, and Linux (Ubuntu), in that order.
+
+![A screenshot of the app running on macOS](assets/app_macos.png)
+
+![A screenshot of the app running on Windows](assets/app_windows.png)
+
+![A screenshot of the app running on Ubuntu](assets/app_ubuntu.png)
+
 ***
 
 Next up: [Where is What?](WhereIsWhat.md)

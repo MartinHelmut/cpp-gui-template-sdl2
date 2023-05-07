@@ -29,3 +29,7 @@ ExitStatus App::Application::run() {
   DPIHandler::set_global_font_scaling(&io);
 }
 ```
+
+***
+
+Next up: [High DPI support](HighDPISupport.md)
