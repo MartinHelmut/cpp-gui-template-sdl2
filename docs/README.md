@@ -32,18 +32,20 @@ As preparation this template contains a `.gitattributes` marking all necessary f
 Have a look at [Migrating existing repository data to LFS](https://github.com/git-lfs/git-lfs/wiki/Tutorial#migrating-existing-repository-data-to-lfs) for an in-depth how-to or run the following commands.
 
 ```shell
-#
-git lfs migrate import \
-  --include="*.png" \
-  --include="*.tiff" \
-  --include="*.bmp" \
-  --include="*.ico" \
-  --include="*.icns" \
-  --include="*.ttf"
-git push --force
+# Initialize Git LFS
+git lfs install
+
+# Track files
+git mv .gitattributes_example .gitattributes
+git commit -m "Add .gitattributes"
+
+# Migrate history to track files and store them in Git LFS
+git lfs migrate import --everything --include="*.png,*.tiff,*.bmp,*.ico,*.icns,*.ttf"
+git push --force-with-lease
+
+# Clear local .git cache
 git reflog expire --expire-unreachable=now --all
 git gc --prune=now
-mv .gitattributes_example .gitattributes
 ```
 
 ### CMake
