@@ -7,6 +7,7 @@
 #include "Core/DPIHandler.hpp"
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Resources.hpp"
+#include "Settings/Project.hpp"
 
 namespace App {
 
@@ -47,7 +48,7 @@ ExitStatus App::Application::run() {
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable |
                     ImGuiConfigFlags_ViewportsEnable;
 
-  const std::string user_config_path{SDL_GetPrefPath("com.mycompany", "app")};
+  const std::string user_config_path{SDL_GetPrefPath(COMPANY_NAMESPACE.c_str(), APP_NAME.c_str())};
   APP_DEBUG("User config path: {}", user_config_path);
 
   // Absolute imgui.ini path to preserve settings independent of app location.

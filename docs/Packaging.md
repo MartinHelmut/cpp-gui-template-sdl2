@@ -29,6 +29,15 @@ On Windows a `.exe` is created via [NSIS](https://nsis.sourceforge.io/Main_Page)
 
 Packaging settings for the application executable are in `src/app/cmake/packaging/Windows.cmake`.
 
+For windows there are also installer texts defined in `packaging/CMakeLists.txt`. Specifically a welcome text, description, readme, and license; as txt files under `packaging/`. The CPack variables are:
+
+```cmake
+set(CPACK_RESOURCE_FILE_WELCOME ${CMAKE_CURRENT_LIST_DIR}/Welcome.txt)
+set(CPACK_PACKAGE_DESCRIPTION_FILE ${CMAKE_CURRENT_LIST_DIR}/Description.txt)
+set(CPACK_RESOURCE_FILE_README ${CMAKE_CURRENT_LIST_DIR}/Readme.txt)
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_LIST_DIR}/License.txt)
+```
+
 ### Linux
 
 On Linux a `.deb` file will be created that can be installed via the systems package manager.

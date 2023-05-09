@@ -11,6 +11,9 @@ project(
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(PROJECT_COMPANY_NAME "My Company")
+set(PROJECT_COMPANY_NAMESPACE "com.mycompany")  # Reverse domain name notation
+
 include(cmake/StandardProjectSettings.cmake)
 include(GNUInstallDirs)
 
