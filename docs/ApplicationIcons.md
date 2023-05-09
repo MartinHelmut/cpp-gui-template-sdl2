@@ -67,7 +67,7 @@ The manifest files then link the app icon to the executable.
 
 #### macOS
 
-For macOS the manifest file is a [Info.plist](https://developer.apple.com/documentation/bundleresources/information_property_list) defining application properties. It is located at `src/app/Manifests/Info.plist` and added to the app bundle through `src/app/cmake/packaging/Darwin.cmake`. Here the CMake function [set_target_properties](https://cmake.org/cmake/help/latest/command/set_target_properties.html) defines `MACOSX_BUNDLE_INFO_PLIST` for the manifest location. The icon name is defined inside the `Info.plist` file under the property name `CFBundleIconFile`.
+For macOS the manifest file is an [Info.plist](https://developer.apple.com/documentation/bundleresources/information_property_list) defining application properties. It is located at `src/app/Manifests/Info.plist` and added to the app bundle through `src/app/cmake/packaging/Darwin.cmake`. Here the CMake function [set_target_properties](https://cmake.org/cmake/help/latest/command/set_target_properties.html) defines `MACOSX_BUNDLE_INFO_PLIST` for the manifest location. The icon name is defined inside the `Info.plist` file under the property name `CFBundleIconFile`.
 
 ```cmake
 # src/app/cmake/packaging/Darwin.cmake

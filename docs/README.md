@@ -7,6 +7,7 @@ This is the user guide for the template and how to adapt it to your own needs.
 - [Requirements](#requirements)
 - [Quick Start](QuickStart.md)
 - [Where is What?](WhereIsWhat.md)
+- [Make it your own](MakeItYourOwn.md)
 - [Build and Execution](BuildAndExecution.md)
 - [Testing](Testing.md)
 - [Profiling](Profiling.md)
@@ -45,9 +46,13 @@ git gc --prune=now
 mv .gitattributes_example .gitattributes
 ```
 
-### CMake & Ninja
+### CMake
 
-The project uses [CMake](https://cmake.org) and [Ninja](https://ninja-build.org).
+The project uses [CMake](https://cmake.org) version >=3.22.
+
+### Ninja or XCode
+
+Depending on the operating system, the project uses either [Ninja](https://ninja-build.org) version >=1 for Windows and Linux, or XCode version >=13 on macOS.
 
 ## Disclaimer
 

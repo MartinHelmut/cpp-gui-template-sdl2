@@ -1,0 +1,8 @@
+#include "Project.hpp"
+
+namespace App {
+
+const std::string COMPANY_NAMESPACE{"@PROJECT_COMPANY_NAMESPACE@"};
+const std::string APP_NAME{"@CMAKE_PROJECT_NAME@"};
+
+}  // namespace App

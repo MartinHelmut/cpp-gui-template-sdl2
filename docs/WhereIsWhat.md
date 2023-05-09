@@ -31,7 +31,7 @@ Generally dependencies are located in `vendor/`. The `vendor/CMakeLists.txt` use
 
 ### Project
 
-Project settings are defined under `cmake/StandardProjectSettings.cmake`.
+General CMake project settings are defined under `cmake/StandardProjectSettings.cmake`, containing build types and compiler flags.
 
 ### Compiler
 
@@ -60,4 +60,4 @@ Under `src/app/cmake/` are specific packaging files for the main executable.
 
 ***
 
-Next up: [Build and Execution](BuildAndExecution.md)
+Next up: [Make it your own](MakeItYourOwn.md)
