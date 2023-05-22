@@ -1,5 +1,3 @@
-#define SDL_MAIN_HANDLED
-
 #include "Core/Application.hpp"
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Log.hpp"
