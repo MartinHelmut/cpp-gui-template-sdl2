@@ -38,6 +38,7 @@ class Application {
   bool m_minimized{false};
   bool m_show_some_panel{true};
   bool m_show_debug_panel{false};
+  bool m_show_demo_panel{false};
 };
 
 }  // namespace App
