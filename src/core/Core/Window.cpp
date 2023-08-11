@@ -9,8 +9,7 @@ namespace App {
 Window::Window(const Settings& settings) {
   APP_PROFILE_FUNCTION();
 
-  const auto window_flags{
-      static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
+  const auto window_flags{static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)};
   const WindowSize size{DPIHandler::get_dpi_aware_window_size(settings)};
 
   m_window = SDL_CreateWindow(settings.title.c_str(),

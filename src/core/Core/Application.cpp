@@ -105,6 +105,7 @@ ExitStatus App::Application::run() {
         }
         if (ImGui::BeginMenu("View")) {
           ImGui::MenuItem("Some Panel", nullptr, &m_show_some_panel);
+          ImGui::MenuItem("ImGui Demo Panel", nullptr, &m_show_demo_panel);
           ImGui::MenuItem("Debug Panel", nullptr, &m_show_debug_panel);
           ImGui::EndMenu();
         }
@@ -117,6 +118,11 @@ ExitStatus App::Application::run() {
         ImGui::Begin("Some panel", &m_show_some_panel);
         ImGui::Text("Hello World");
         ImGui::End();
+      }
+
+      // ImGUI demo panel
+      if (m_show_demo_panel) {
+        ImGui::ShowDemoWindow(&m_show_demo_panel);
       }
 
       // Debug panel
