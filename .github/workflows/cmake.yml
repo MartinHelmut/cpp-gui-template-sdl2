@@ -1,24 +1,25 @@
-name: CMake
+name: "Build and Test"
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
+  build_and_test:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Install GitHub CLI
+      - name: Install Dependencies
         run: |
-          brew update
           brew install llvm
           ln -s "$(brew --prefix llvm)/bin/clang-format" "/usr/local/bin/clang-format"
           ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
