@@ -10,3 +10,6 @@ profile.json
 
 # Created by running the application.
 *.log
+
+# VCPKG
+vcpkg_installed/

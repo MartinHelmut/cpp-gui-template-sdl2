@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.18.2)
+project(cef-prebuilt)
+
+# Shut up!
+set(CMAKE_CXX_FLAGS "-Wno-error -Wno-all -Wno-extra -Wno-deprecated-builtins")
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+set(CEF_ROOT "${CMAKE_SOURCE_DIR}")
+find_package(CEF REQUIRED)
+add_subdirectory(${CEF_LIBCEF_DLL_WRAPPER_PATH} libcef_dll_wrapper)
+
+install(TARGETS libcef_dll_wrapper)

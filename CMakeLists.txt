@@ -11,6 +11,11 @@ project(
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Setup vcpkg
+set(VCPKG_CRT_LINKAGE static)
+set(VCPKG_LIBRARY_LINKAGE static)
+set(VCPKG_OVERLAY_PORTS "${CMAKE_CURRENT_LIST_DIR}/overlay_ports")
+
 set(PROJECT_COMPANY_NAME "My Company")
 set(PROJECT_COMPANY_NAMESPACE "com.mycompany")  # Reverse domain name notation
 

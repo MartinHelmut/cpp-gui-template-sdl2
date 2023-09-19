@@ -1,0 +1,14 @@
+add_library(cef INTERFACE)
+
+find_library(CEF_LIBRARY_DEBUG libcef_dll_wrapper)
+string(REPLACE "/debug/lib/" "/lib/" CEF_LIBRARY_RELEASE ${CEF_LIBRARY_DEBUG})
+
+find_path(CEF_INCLUDE_DIR include/cef_app.h)
+find_path(CEF_SHARE share/cef-prebuilt)
+
+set(CEF_SHARE "${CEF_SHARE}/share/cef-prebuilt")
+
+target_link_libraries(cef INTERFACE "$<IF:$<CONFIG:Debug>,${CEF_LIBRARY_DEBUG},${CEF_LIBRARY_RELEASE}>")
+target_link_libraries(cef INTERFACE "${CEF_SHARE}/$<CONFIG>/cef_sandbox.lib")
+target_link_libraries(cef INTERFACE "${CEF_SHARE}/$<CONFIG>/libcef.lib")
+target_include_directories(cef INTERFACE ${CEF_INCLUDE_DIR})
