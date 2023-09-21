@@ -2,6 +2,10 @@
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Log.hpp"
 
+// @info: WORKS!
+#include <include/cef_browser.h>
+#include <include/cef_app.h>
+
 int main() {
   try {
     APP_PROFILE_BEGIN_SESSION_WITH_FILE("App", "profile.json");

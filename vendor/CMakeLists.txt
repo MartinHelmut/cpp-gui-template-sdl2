@@ -34,3 +34,5 @@ FetchContent_Declare(
   GIT_TAG v1.11.0
 )
 add_subdirectory(spdlog)
+
+add_subdirectory(cef)
