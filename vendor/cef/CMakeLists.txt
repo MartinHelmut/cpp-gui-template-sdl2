@@ -7,7 +7,7 @@ set(CMAKE_CONFIGURATION_TYPES Debug Release)
 project(cef)
 
 # @todo: Temporarily deactivate warnings.
-set(CMAKE_CXX_FLAGS "-Wno-error -Wno-all -Wno-extra -Wno-deprecated-builtins")
+set(CMAKE_CXX_FLAGS "-Wno-error -Wno-all -Wno-extra -Wno-deprecated-builtins -Wno-overriding-t-option")
 
 # Specify the CEF distribution version.
 set(CEF_VERSION "106.0.26+ge105400+chromium-106.0.5249.91")

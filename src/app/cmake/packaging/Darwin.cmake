@@ -12,6 +12,11 @@ add_custom_command(TARGET ${NAME} POST_BUILD
   $<TARGET_FILE:SDL2::SDL2>
   ${APP_BUNDLE_PATH}/Contents/Frameworks/$<TARGET_FILE_NAME:SDL2::SDL2>)
 
+add_custom_command(TARGET ${NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+  $<TARGET_FILE:libcef_dll_wrapper>
+  ${APP_BUNDLE_PATH}/Contents/Frameworks/$<TARGET_FILE_NAME:libcef_dll_wrapper>)
+
 # For distribution without XCode:
 if (NOT "${CMAKE_GENERATOR}" STREQUAL "Xcode")
   install(FILES $<TARGET_FILE:SDL2::SDL2> DESTINATION ${APP_BUNDLE_PATH}/Contents/Frameworks/)

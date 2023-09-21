@@ -9,6 +9,10 @@
 #include "Core/Resources.hpp"
 #include "Settings/Project.hpp"
 
+// @info: WORKS!
+#include <include/cef_browser.h>
+#include <include/cef_app.h>
+
 namespace App {
 
 Application::Application(const std::string& title) {
@@ -67,6 +71,8 @@ ExitStatus App::Application::run() {
   // Setup Platform/Renderer backends
   ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_native_window(), m_window->get_native_renderer());
   ImGui_ImplSDLRenderer_Init(m_window->get_native_renderer());
+
+  int iter{0};
 
   m_running = true;
   while (m_running) {
@@ -128,6 +134,17 @@ ExitStatus App::Application::run() {
         ImGui::Text("Font size: %f", font_size);
         ImGui::Text("Global font scaling %f", io.FontGlobalScale);
         ImGui::Text("UI scaling factor: %f", font_scaling_factor);
+        ImGui::End();
+      }
+
+      // CEF Test panel
+      {
+        iter++;
+        bool show_debug_panel{true};
+        CefRect rect{0, 0, 100, 100};
+        rect.x = iter;
+        ImGui::Begin("CEF debug panel", &show_debug_panel);
+        ImGui::Text("rect.x = %d", rect.x);
         ImGui::End();
       }
     }
