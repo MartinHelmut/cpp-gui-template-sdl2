@@ -1,3 +1,5 @@
+#include <exception>
+
 #include "Core/Application.hpp"
 #include "Core/Debug/Instrumentor.hpp"
 #include "Core/Log.hpp"

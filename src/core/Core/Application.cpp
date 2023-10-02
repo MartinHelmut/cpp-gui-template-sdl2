@@ -1,12 +1,23 @@
 #include "Application.hpp"
 
+#include <SDL.h>
+#include <SDL_error.h>
+#include <SDL_events.h>
+#include <SDL_filesystem.h>
+#include <SDL_render.h>
+#include <SDL_video.h>
 #include <backends/imgui_impl_sdl2.h>
 #include <backends/imgui_impl_sdlrenderer2.h>
 #include <imgui.h>
 
+#include <memory>
+#include <string>
+
 #include "Core/DPIHandler.hpp"
 #include "Core/Debug/Instrumentor.hpp"
+#include "Core/Log.hpp"
 #include "Core/Resources.hpp"
+#include "Core/Window.hpp"
 #include "Settings/Project.hpp"
 
 namespace App {
@@ -162,6 +173,9 @@ void Application::on_event(const SDL_WindowEvent& event) {
       return on_minimize();
     case SDL_WINDOWEVENT_SHOWN:
       return on_shown();
+    default:
+      // Do nothing otherwise
+      return;
   }
 }
 

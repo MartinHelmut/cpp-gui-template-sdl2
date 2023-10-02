@@ -1,3 +1,5 @@
+#include <string>
+
 #include "Settings/Project.hpp"
 
 namespace App {
