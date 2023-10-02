@@ -1,6 +1,10 @@
 #include "Core/Resources.hpp"
 
-#include <SDL.h>
+#include <SDL_filesystem.h>
+
+#include <filesystem>
+#include <string>
+#include <string_view>
 
 namespace App {
 

@@ -1,8 +1,13 @@
 #include "Core/DPIHandler.hpp"
 
+#include <SDL_render.h>
+#include <SDL_video.h>
+#include <imgui.h>
+
 #include <cmath>
 
 #include "Core/Debug/Instrumentor.hpp"
+#include "Core/Window.hpp"
 
 namespace App {
 
