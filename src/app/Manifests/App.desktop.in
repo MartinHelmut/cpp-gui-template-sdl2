@@ -3,6 +3,6 @@ Name=@NAME@
 GenericName=@CMAKE_PROJECT_NAME@
 Comment=@CMAKE_PROJECT_DESCRIPTION@
 Exec=@NAME@
-Icon=BaseAppIcon
+Icon=@NAME@_icon
 Type=Application
 Categories=Miscellaneous;
