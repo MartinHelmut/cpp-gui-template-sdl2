@@ -1,7 +1,7 @@
 # Use main entry for Windows GUI app.
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
 
-# Copy .dll files on Windows/Linux to the target App build folder.
+# Copy .dll files on Windows to the target App build folder.
 # For development:
 add_custom_command(TARGET ${NAME} POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
