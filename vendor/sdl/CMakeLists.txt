@@ -1,5 +1,5 @@
 message(STATUS "Fetching SDL ...")
 
-set(SDL2_DISABLE_SDL2MAIN ON)
+option(SDL2_DISABLE_SDL2MAIN "Substitute for SDL_MAIN_HANDLED" ON)
 
 FetchContent_MakeAvailable(SDL2)

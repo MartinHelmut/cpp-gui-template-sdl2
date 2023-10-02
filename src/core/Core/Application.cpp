@@ -1,7 +1,7 @@
 #include "Application.hpp"
 
 #include <backends/imgui_impl_sdl2.h>
-#include <backends/imgui_impl_sdlrenderer.h>
+#include <backends/imgui_impl_sdlrenderer2.h>
 #include <imgui.h>
 
 #include "Core/DPIHandler.hpp"
@@ -26,7 +26,7 @@ Application::Application(const std::string& title) {
 Application::~Application() {
   APP_PROFILE_FUNCTION();
 
-  ImGui_ImplSDLRenderer_Shutdown();
+  ImGui_ImplSDLRenderer2_Shutdown();
   ImGui_ImplSDL2_Shutdown();
   ImGui::DestroyContext();
 
@@ -66,7 +66,7 @@ ExitStatus App::Application::run() {
 
   // Setup Platform/Renderer backends
   ImGui_ImplSDL2_InitForSDLRenderer(m_window->get_native_window(), m_window->get_native_renderer());
-  ImGui_ImplSDLRenderer_Init(m_window->get_native_renderer());
+  ImGui_ImplSDLRenderer2_Init(m_window->get_native_renderer());
 
   m_running = true;
   while (m_running) {
@@ -89,7 +89,7 @@ ExitStatus App::Application::run() {
     }
 
     // Start the Dear ImGui frame
-    ImGui_ImplSDLRenderer_NewFrame();
+    ImGui_ImplSDLRenderer2_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
@@ -137,7 +137,7 @@ ExitStatus App::Application::run() {
 
     SDL_SetRenderDrawColor(m_window->get_native_renderer(), 100, 100, 100, 255);
     SDL_RenderClear(m_window->get_native_renderer());
-    ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
+    ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
     SDL_RenderPresent(m_window->get_native_renderer());
   }
 
