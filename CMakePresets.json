@@ -29,6 +29,9 @@
       "displayName": "Debug (Xcode)",
       "generator": "Xcode",
       "binaryDir": "build/xcode-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -40,6 +43,9 @@
       "displayName": "Release (Xcode)",
       "generator": "Xcode",
       "binaryDir": "build/xcode-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      },
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
