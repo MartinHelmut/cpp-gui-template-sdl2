@@ -1,10 +1,5 @@
 {
   "version": 6,
-  "cmakeMinimumRequired": {
-    "major": 3,
-    "minor": 22,
-    "patch": 0
-  },
   "configurePresets": [
     {
       "name": "debug",
@@ -51,6 +46,116 @@
         "lhs": "${hostSystemName}",
         "rhs": "Darwin"
       }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "Build Debug",
+      "configurePreset": "debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "release",
+      "displayName": "Build Release",
+      "configurePreset": "release",
+      "configuration": "Release",
+      "targets": [
+        "App"
+      ]
+    },
+    {
+      "name": "xcode-debug",
+      "displayName": "Build Debug (Xcode)",
+      "configurePreset": "xcode-debug",
+      "configuration": "Debug",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    },
+    {
+      "name": "xcode-release",
+      "displayName": "Build Release (Xcode)",
+      "configurePreset": "xcode-release",
+      "configuration": "Release",
+      "targets": [
+        "App"
+      ],
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    }
+  ],
+  "packagePresets": [
+    {
+      "name": "release",
+      "displayName": "Distribute Release",
+      "configurePreset": "release",
+      "configurations": [
+        "Release"
+      ]
+    },
+    {
+      "name": "xcode-release",
+      "displayName": "Distribute Release (Xcode)",
+      "configurePreset": "xcode-release",
+      "configurations": [
+        "Release"
+      ],
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "all",
+      "displayName": "Test All",
+      "configurePreset": "debug"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "dist",
+      "displayName": "Distribution Workflow",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "release"
+        },
+        {
+          "type": "build",
+          "name": "release"
+        },
+        {
+          "type": "package",
+          "name": "release"
+        }
+      ]
+    },
+    {
+      "name": "xcode-dist",
+      "displayName": "Distribution Workflow (Xcode)",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "xcode-release"
+        },
+        {
+          "type": "build",
+          "name": "xcode-release"
+        },
+        {
+          "type": "package",
+          "name": "xcode-release"
+        }
+      ]
     }
   ]
 }
