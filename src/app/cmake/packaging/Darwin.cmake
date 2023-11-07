@@ -1,10 +1,3 @@
-# XCode generates build directories with build types inside.
-if ("${CMAKE_GENERATOR}" STREQUAL "Xcode")
-  set(APP_BUNDLE_PATH "${CMAKE_BUILD_TYPE}/${NAME}.app")
-else ()
-  set(APP_BUNDLE_PATH "${NAME}.app")
-endif ()
-
 # Get dynamic SDL2 lib into Frameworks folder in app bundle.
 # For development:
 add_custom_command(TARGET ${NAME} POST_BUILD
