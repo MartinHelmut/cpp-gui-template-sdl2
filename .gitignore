@@ -1,5 +1,6 @@
 # Application build output
 build/
+distribution/
 
 # Created by CPack when executing tests.
 Testing/
