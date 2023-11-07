@@ -30,11 +30,11 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Release -B build/release
 cmake --build build/release
 ```
 
-On macOS XCode should be used as generator via `-GXCode`. For example creating a release build with XCode.
+On macOS Xcode should be used as generator via `-GXcode`. For example creating a release build with XCode.
 
 ```shell
-# Using XCode
-cmake -GXCode -DCMAKE_BUILD_TYPE=Release -B build/xcode
+# Using Xcode
+cmake -GXcode -DCMAKE_BUILD_TYPE=Release -B build/xcode
 cmake --build build/xcode
 ```
 
@@ -57,13 +57,13 @@ To run a **release** build:
 ./build/release/src/app/App.app/Contents/MacOS/App
 ```
 
-To run a **debug** build created **with XCode**:
+To run a **debug** build created **with Xcode**:
 
 ```shell
 ./build/xcode/src/app/Debug/App.app/Contents/MacOS/App
 ```
 
-To run a **release** build created **with XCode**:
+To run a **release** build created **with Xcode**:
 
 ```shell
 ./build/xcode/src/app/Release/App.app/Contents/MacOS/App

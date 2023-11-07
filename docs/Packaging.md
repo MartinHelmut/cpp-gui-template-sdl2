@@ -23,7 +23,7 @@ Packaging settings for the application executable are in `src/app/cmake/packagin
 The final application build for Apple devices should be built via the `Xcode` generator with CMake.
 
 ```shell
-cmake -GXCode -DCMAKE_BUILD_TYPE=Release -B build/xcode
+cmake -GXcode -DCMAKE_BUILD_TYPE=Release -B build/xcode
 cmake --build build/xcode
 ```
 
@@ -58,10 +58,10 @@ system**.
 
 ### macOS
 
-XCode should be used to create the release build for the application distributable.
+Xcode should be used to create the release build for the application distributable.
 
 ```shell
-cmake -GXCode -DCMAKE_BUILD_TYPE=Release -B build/xcode
+cmake -GXcode -DCMAKE_BUILD_TYPE=Release -B build/xcode
 cmake --build build/xcode
 cpack --config build/xcode/CPackConfig.cmake
 ```

@@ -60,10 +60,10 @@ git gc --prune=now
 
 The project uses [CMake](https://cmake.org) version >=3.22.
 
-### Ninja or XCode
+### Ninja or Xcode
 
 Depending on the operating system, the project uses either [Ninja](https://ninja-build.org) version >=1 for Windows and
-Linux, or XCode version >=13 on macOS.
+Linux, or Xcode version >=13 on macOS.
 
 ## Disclaimer
 
