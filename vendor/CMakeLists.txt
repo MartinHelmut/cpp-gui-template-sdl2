@@ -17,14 +17,14 @@ add_subdirectory(fmt)
 FetchContent_Declare(
   imgui
   GIT_REPOSITORY "https://github.com/ocornut/imgui.git"
-  GIT_TAG ff534b0d0a6df31764626a97ebcaa0de5be20fd3 # Branch: docking, date: 02.10.2023, 10:57 GMT+2
+  GIT_TAG 37ea320b96a4b77581986f5581707021a7be94c9 # Branch: docking, date: 07.11.2023, 08:20 GMT+1
 )
 add_subdirectory(imgui)
 
 FetchContent_Declare(
   SDL2
   GIT_REPOSITORY "https://github.com/libsdl-org/SDL.git"
-  GIT_TAG release-2.28.4
+  GIT_TAG release-2.28.5
 )
 add_subdirectory(sdl)
 
