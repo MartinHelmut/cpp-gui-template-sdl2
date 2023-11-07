@@ -40,7 +40,8 @@ cmake --build build/xcode
 
 ## Execute
 
-When not running through an [IDE like CLion](https://www.jetbrains.com/clion), the built application can be run by directly executing the generated binary.
+When not running through an [IDE like CLion](https://www.jetbrains.com/clion), the built application can be run by
+directly executing the generated binary.
 
 ### macOS
 
@@ -98,7 +99,8 @@ To run a **release** build:
 
 ## Distribution
 
-To bundle the application and create a distribution package CPack is used. Before executing CPack a [release build needs to be generated](#build).
+To bundle the application and create a distribution package CPack is used. Before executing CPack
+a [release build needs to be generated](#build).
 
 ```shell
 cpack --config build/release/CPackConfig.cmake

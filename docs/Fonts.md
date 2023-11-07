@@ -1,10 +1,12 @@
 # Fonts
 
-Applications fonts are in `src/assets/fonts`, and the template comes with the amazing open source font [Manrope](https://manropefont.com).
+Applications fonts are in `src/assets/fonts`, and the template comes with the amazing open source
+font [Manrope](https://manropefont.com).
 
 ## Add new font
 
-After adding a new font to the `src/assets/fonts` folder, the fonts needs to be added to ImGUI. This is done in `src/core/Core/Application.cpp`, the `run` method.
+After adding a new font to the `src/assets/fonts` folder, the fonts needs to be added to ImGUI. This is done
+in `src/core/Core/Application.cpp`, the `run` method.
 
 ```c++
 ExitStatus App::Application::run() {

@@ -1,6 +1,8 @@
 # Logging
 
-The library [spdlog](https://github.com/gabime/spdlog) is used for logging. The logger is set up in `src/core/Core/Log.{cpp,hpp}` that will define a default logger writing to stdout and into a `app.log` file. The macros used for logging are defined in `src/core/Core/Log.hpp`.
+The library [spdlog](https://github.com/gabime/spdlog) is used for logging. The logger is set up
+in `src/core/Core/Log.{cpp,hpp}` that will define a default logger writing to stdout and into a `app.log` file. The
+macros used for logging are defined in `src/core/Core/Log.hpp`.
 
 ## Available macros
 
