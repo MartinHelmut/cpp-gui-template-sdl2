@@ -14,6 +14,7 @@ This is the user guide for the template and how to adapt it to your own needs.
 - [Logging](Logging.md)
 - [Dependencies](Dependencies.md)
 - [Packaging](Packaging.md)
+- [CMake presets](CMakePresets.md)
 - [Platform dependent code](PlatformCode.md)
 - [Application Icons](ApplicationIcons.md)
 - [Fonts](Fonts.md)
@@ -25,11 +26,18 @@ This is the user guide for the template and how to adapt it to your own needs.
 
 ### Git LFS
 
-This template contains assets, specifically [icons and fonts](WhereIsWhat.md#static-assets). When starting a new project from a template it gets a clean history. Nevertheless, all assets should be stored through [Git Large File Storage (LFS)](https://git-lfs.com).
+This template contains assets, specifically [icons and fonts](WhereIsWhat.md#static-assets). When starting a new project
+from a template it gets a clean history. Nevertheless, all assets should be stored
+through [Git Large File Storage (LFS)](https://git-lfs.com).
 
-As preparation this template contains a `.gitattributes` marking all necessary files. **After project creation** from this template [git lfs migrate](https://github.com/git-lfs/git-lfs/wiki/Tutorial#migrating-existing-repository-data-to-lfs) should be executed. It requires Git LFS v2.2.1 or later to be installed.
+As preparation this template contains a `.gitattributes` marking all necessary files. **After project creation** from
+this
+template [git lfs migrate](https://github.com/git-lfs/git-lfs/wiki/Tutorial#migrating-existing-repository-data-to-lfs)
+should be executed. It requires Git LFS v2.2.1 or later to be installed.
 
-Have a look at [Migrating existing repository data to LFS](https://github.com/git-lfs/git-lfs/wiki/Tutorial#migrating-existing-repository-data-to-lfs) for an in-depth how-to or run the following commands.
+Have a look
+at [Migrating existing repository data to LFS](https://github.com/git-lfs/git-lfs/wiki/Tutorial#migrating-existing-repository-data-to-lfs)
+for an in-depth how-to or run the following commands.
 
 ```shell
 # Initialize Git LFS
@@ -54,7 +62,8 @@ The project uses [CMake](https://cmake.org) version >=3.22.
 
 ### Ninja or XCode
 
-Depending on the operating system, the project uses either [Ninja](https://ninja-build.org) version >=1 for Windows and Linux, or XCode version >=13 on macOS.
+Depending on the operating system, the project uses either [Ninja](https://ninja-build.org) version >=1 for Windows and
+Linux, or XCode version >=13 on macOS.
 
 ## Disclaimer
 

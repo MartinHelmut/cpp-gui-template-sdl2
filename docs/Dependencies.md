@@ -1,6 +1,8 @@
 # Dependencies
 
-Dependencies are located in `vendor/`. The `vendor/CMakeLists.txt` uses CMake's [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) to load dependencies on configure time. Every dependency also has an associated folder containing a `CMakeLists.txt` for configuration.
+Dependencies are located in `vendor/`. The `vendor/CMakeLists.txt` uses
+CMake's [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) to load dependencies on configure
+time. Every dependency also has an associated folder containing a `CMakeLists.txt` for configuration.
 
 ## Already included
 
@@ -14,7 +16,9 @@ The following set of dependencies is already included:
 
 ## Add new dependency with CMake support
 
-If a package to be included already supports CMake the process of adding it is rather straight forward. It needs a new entry in `vendor/CMakeLists.txt` to fetch the actual contents. Via `FetchContent_Declare` a name, repo URL and tag, branch, or commit name is given.
+If a package to be included already supports CMake the process of adding it is rather straight forward. It needs a new
+entry in `vendor/CMakeLists.txt` to fetch the actual contents. Via `FetchContent_Declare` a name, repo URL and tag,
+branch, or commit name is given.
 
 ```cmake
 # vendor/CMakeLists.txt
@@ -28,7 +32,8 @@ FetchContent_Declare(
 add_subdirectory(spdlog)
 ```
 
-After adding this to the `vendor` CMake file, a new `CMakeLists.txt` needs to be created in a new folder for the dependency. Again with the spdlog example:
+After adding this to the `vendor` CMake file, a new `CMakeLists.txt` needs to be created in a new folder for the
+dependency. Again with the spdlog example:
 
 ```cmake
 # vendor/spdlog/CMakeLists.txt
@@ -41,11 +46,14 @@ set(SPDLOG_FMT_EXTERNAL "ON")
 FetchContent_MakeAvailable(spdlog)
 ```
 
-This dependency specific CMake file will contain a message for fetching the library, any package configuration, and a call to `FetchContent_MakeAvailable` with the given name to add them to the build.
+This dependency specific CMake file will contain a message for fetching the library, any package configuration, and a
+call to `FetchContent_MakeAvailable` with the given name to add them to the build.
 
 ## New dependency without CMake support
 
-Adding a package that does not support CMake works almost the same as with support above. The difference is that the new library needs to be declared. Taking Dear ImGui as an example, that does not support CMake, this is how the setup is done:
+Adding a package that does not support CMake works almost the same as with support above. The difference is that the new
+library needs to be declared. Taking Dear ImGui as an example, that does not support CMake, this is how the setup is
+done:
 
 ```cmake
 message(STATUS "Fetching imgui ...")
@@ -82,7 +90,8 @@ FetchContent_MakeAvailable(imgui)
 
 ## Link dependency
 
-After adding a new dependency, to actually use it, it needs to be added to a target via `target_link_libraries`. For example adding ImGUI to Core:
+After adding a new dependency, to actually use it, it needs to be added to a target via `target_link_libraries`. For
+example adding ImGUI to Core:
 
 ```cmake
 # other CMake ...

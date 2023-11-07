@@ -26,7 +26,8 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DDEACTIVATE_LOGGING -B build/debug
 
 ### `DEBUG`
 
-Will not only enable application internal debugging, but also profiling (`APP_PROFILE`). This option is mainly useful to get debugging and profiling output on release builds.
+Will not only enable application internal debugging, but also profiling (`APP_PROFILE`). This option is mainly useful to
+get debugging and profiling output on release builds.
 
 **Example:**
 
@@ -64,15 +65,22 @@ After configuration the application can be built through CMake via `cmake --buil
 cmake --build build/debug
 ```
 
-This will build the application with the given configuration. Depending on the platform it was executed on a different build directory structure will be generated, reflecting how the application will latter be [installed on packaging](Packaging.md).
+This will build the application with the given configuration. Depending on the platform it was executed on a different
+build directory structure will be generated, reflecting how the application will latter
+be [installed on packaging](Packaging.md).
 
 ## Execute
 
-When not running through an [IDE like CLion](https://www.jetbrains.com/clion), the built application can be run by directly executing the generated binary. Depending on the operating system it can be found at a different place, as different build directory structures are generated.
+When not running through an [IDE like CLion](https://www.jetbrains.com/clion), the built application can be run by
+directly executing the generated binary. Depending on the operating system it can be found at a different place, as
+different build directory structures are generated.
 
 ### macOS
 
-On Apple devices an app package structure is created under `./build/<TARGET>/src/app/App.app`, where `<TARGET>` is the build target like **debug** or **release**. Inside that [application bundle](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/AboutBundles/AboutBundles.html#//apple_ref/doc/uid/10000123i-CH100-SW1) is the app executable.
+On Apple devices an app package structure is created under `./build/<TARGET>/src/app/App.app`, where `<TARGET>` is the
+build target like **debug** or **release**. Inside
+that [application bundle](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/AboutBundles/AboutBundles.html#//apple_ref/doc/uid/10000123i-CH100-SW1)
+is the app executable.
 
 Run on a built target, in this example **debug**:
 
@@ -80,7 +88,8 @@ Run on a built target, in this example **debug**:
 ./build/debug/src/app/App.app/Contents/MacOS/App
 ```
 
-Though, even better is to use **XCode as generator** to create app builds on macOS. Only difference in usage is running CMake with `-GXCode`. If `CMAKE_OSX_ARCHITECTURES` is not set, it will create universal binaries on M1/2 macs.
+Though, even better is to use **XCode as generator** to create app builds on macOS. Only difference in usage is running
+CMake with `-GXCode`. If `CMAKE_OSX_ARCHITECTURES` is not set, it will create universal binaries on M1/2 macs.
 
 To run a **debug** build created with XCode:
 
@@ -110,7 +119,8 @@ build/release/src/app/App.exe
 
 ### Linux
 
-For Linux the generated structure is a direct executable, as libraries and assets have dedicated locations on the system.
+For Linux the generated structure is a direct executable, as libraries and assets have dedicated locations on the
+system.
 
 Run on a built target, in this example **debug**:
 
