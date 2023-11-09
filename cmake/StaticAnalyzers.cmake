@@ -11,6 +11,7 @@ if (NOT CMAKE_BUILD_TYPE STREQUAL "Release")
   # discovered on Apple M1, 13.0.
   if (NOT WIN32)
     message(STATUS "Using address sanitizer")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -fsanitize=address -g")
+    add_compile_options(-O0 -fsanitize=address -g)
+    add_link_options(-O0 -fsanitize=address -g)
   endif ()
 endif ()
