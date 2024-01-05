@@ -1,3 +1,5 @@
+#define SDL_MAIN_HANDLED
+
 #include <exception>
 
 #include "Core/Application.hpp"
