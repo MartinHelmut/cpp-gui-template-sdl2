@@ -84,7 +84,7 @@ on run argv
       delay 5
       close
 
-      -- Open and close for visual verifycation.
+      -- Open and close for visual verification.
       open
       delay 5
       close
