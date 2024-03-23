@@ -1,5 +1,12 @@
 # Use main entry for Windows GUI app.
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
+if (MINGW)
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-subsystem,windows")
+  # Static link MinGW standard libraries
+  set(CMAKE_CXX_STANDARD_LIBRARIES
+    "-static-libgcc -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
+else ()
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /subsystem:windows /entry:mainCRTStartup")
+endif ()
 
 # Copy .dll files on Windows to the target App build folder.
 # For development:
