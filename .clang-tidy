@@ -23,10 +23,14 @@ Checks: >
   -clang-analyzer-optin.cplusplus.UninitializedObject,
   -misc-static-assert,
   -modernize-use-trailing-return-type,
+  -modernize-use-nullptr,
   -bugprone-easily-swappable-parameters,
   -bugprone-exception-escape,
   -cert-env33-c,
   -cert-err58-cpp
+
+# -modernize-use-nullptr is deactivated for x86
+# See: https://github.com/llvm/llvm-project/issues/53778
 
 WarningsAsErrors: '*'
 HeaderFilterRegex: ''
