@@ -1,7 +1,3 @@
-message(STATUS "Fetching imgui ...")
-
-set(CMAKE_CXX_STANDARD 20)
-
 FetchContent_GetProperties(imgui)
 if (NOT imgui_POPULATED)
   FetchContent_Populate(imgui)
@@ -18,6 +14,5 @@ add_library(imgui
   ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer2.h ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer2.cpp)
 
 target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
+target_compile_features(imgui PRIVATE cxx_std_20)
 target_link_libraries(imgui PUBLIC SDL2::SDL2)
-
-FetchContent_MakeAvailable(imgui)
