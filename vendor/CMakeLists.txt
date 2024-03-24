@@ -11,25 +11,25 @@ FetchContent_Declare(
 FetchContent_Declare(
   fmt
   GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-  GIT_TAG 10.1.1
+  GIT_TAG 10.2.1
 )
 
 FetchContent_Declare(
   imgui
   GIT_REPOSITORY "https://github.com/ocornut/imgui.git"
-  GIT_TAG 37ea320b96a4b77581986f5581707021a7be94c9 # Branch: docking, date: 07.11.2023, 08:20 GMT+1
+  GIT_TAG 085781f5ca5372d5fc804d7e44b5bf27a8994af7 # Branch: docking, date: 19.03.2024, 06:52 GMT+1
 )
 
 FetchContent_Declare(
   SDL2
   GIT_REPOSITORY "https://github.com/libsdl-org/SDL.git"
-  GIT_TAG release-2.28.5
+  GIT_TAG release-2.30.1
 )
 
 FetchContent_Declare(
   spdlog
   GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
-  GIT_TAG v1.12.0
+  GIT_TAG v1.13.0
 )
 
 # Settings
