@@ -2,11 +2,11 @@
 
 Dependencies are located in `vendor/`. The `vendor/CMakeLists.txt` uses
 CMake's [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html) to load dependencies on configure
-time. Every dependency also has an associated folder containing a `CMakeLists.txt` for configuration.
+time. Some dependencies also have an associated folder containing a `CMakeLists.txt` for configuration or setup purpose.
 
 ## Already included
 
-The following set of dependencies is already included:
+The following set of dependencies are already included:
 
 - [Doctest](https://github.com/doctest/doctest) - Testing framework
 - [fmtlib](https://fmt.dev/latest/index.html) - Formatting library
@@ -29,37 +29,35 @@ FetchContent_Declare(
   GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
   GIT_TAG v1.11.0
 )
-add_subdirectory(spdlog)
 ```
 
-After adding this to the `vendor` CMake file, a new `CMakeLists.txt` needs to be created in a new folder for the
-dependency. Again with the spdlog example:
+Further down the same file is a section for dependency settings. Again using spdlog as an example:
 
 ```cmake
-# vendor/spdlog/CMakeLists.txt
+# vendor/CMakeLists.txt
 
-message(STATUS "Fetching spdlog ...")
+# Settings
 
 # Any package build settings here
 set(SPDLOG_FMT_EXTERNAL "ON")
 
-FetchContent_MakeAvailable(spdlog)
+# Populate
+
+FetchContent_MakeAvailable(
+  # Other dependencies ...
+  spdlog)
 ```
 
-This dependency specific CMake file will contain a message for fetching the library, any package configuration, and a
-call to `FetchContent_MakeAvailable` with the given name to add them to the build.
+At the end the call to `FetchContent_MakeAvailable` gets the new dependency added as well.
 
 ## New dependency without CMake support
 
-Adding a package that does not support CMake works almost the same as with support above. The difference is that the new
-library needs to be declared. Taking Dear ImGui as an example, that does not support CMake, this is how the setup is
+Adding a package that does not support CMake is also not a problem. The difference is that the new library needs to be
+setup separately. Taking Dear ImGui as an example, that does not support CMake, this is how the setup is
 done:
 
 ```cmake
-message(STATUS "Fetching imgui ...")
-
-# Define build options.
-set(CMAKE_CXX_STANDARD 20)
+# vendor/imgui-setup/CMakeLists.txt
 
 # Populate scope with library variables to get access to source and build directories.
 FetchContent_GetProperties(imgui)
@@ -81,11 +79,28 @@ add_library(imgui
 # Set include directory based in populated variable `imgui_SOURCE_DIR`.
 target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
 
+# Define compile options.
+target_compile_features(imgui PRIVATE cxx_std_20)
+
 # Link external library SDL2, part of the dependencies as well.
 target_link_libraries(imgui PUBLIC SDL2::SDL2)
+```
 
-# Add to main build
-FetchContent_MakeAvailable(imgui)
+After setting up the library it needs to be made available in the vendor `CMakeLists.txt`:
+
+```cmake
+# vendor/CMakeLists.txt
+
+# Settings
+
+# Adding the setup directory
+add_subdirectory(imgui-setup)
+
+# Populate
+
+FetchContent_MakeAvailable(
+  # Other dependencies ...
+  imgui)
 ```
 
 ## Link dependency
