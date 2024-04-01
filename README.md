@@ -13,14 +13,13 @@ After using this template to create your own repository, it is time to first run
 
 ## Other versions
 
-If you want another version of this template, on using the template **check the box** to _"Include all branches"_, as
-every version is a separate branch. The following versions of this template are included:
+There are other versions of this template:
 
-- Version 2 - Currently selected
-- [Version 1](https://github.com/MartinHelmut/cpp-gui-template-sdl2/tree/version-1) - Older version without CPack
+- [SDL3 & OpenGL](https://github.com/MartinHelmut/cpp-gui-template-sdl3-opengl)
+- [SDL3 Renderer](https://github.com/MartinHelmut/cpp-gui-template-sdl3)
+- [SDL2 & OpenGL](https://github.com/MartinHelmut/cpp-gui-template-sdl2-opengl)
 
-As the SDL2 renderer does not support multi-viewport and detached widgets, there is another version of this template
-with [**OpenGL** in a separate repository](https://github.com/MartinHelmut/cpp-gui-template-sdl2-opengl).
+**Remark:** The SDL2/3 renderer versions do not support multi-viewport and detached widgets, but the OpenGL versions do.
 
 ## Disclaimer
 
