@@ -49,3 +49,4 @@ CheckOptions:
   - { key: readability-identifier-length.MinimumVariableNameLength,  value: 2 }
   - { key: readability-identifier-length.MinimumParameterNameLength, value: 2 }
   - { key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors, value: '1' }
+  - { key: misc-include-cleaner.IgnoreHeaders, value: "SDL2/SDL\.h" }

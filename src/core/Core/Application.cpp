@@ -1,11 +1,6 @@
 #include "Application.hpp"
 
-#include <SDL.h>
-#include <SDL_error.h>
-#include <SDL_events.h>
-#include <SDL_filesystem.h>
-#include <SDL_render.h>
-#include <SDL_video.h>
+#include <SDL2/SDL.h>
 #include <backends/imgui_impl_sdl2.h>
 #include <backends/imgui_impl_sdlrenderer2.h>
 #include <imgui.h>
@@ -162,10 +157,14 @@ ExitStatus App::Application::run() {
 }
 
 void App::Application::stop() {
+  APP_PROFILE_FUNCTION();
+
   m_running = false;
 }
 
 void Application::on_event(const SDL_WindowEvent& event) {
+  APP_PROFILE_FUNCTION();
+
   switch (event.event) {
     case SDL_WINDOWEVENT_CLOSE:
       return on_close();
@@ -180,14 +179,20 @@ void Application::on_event(const SDL_WindowEvent& event) {
 }
 
 void Application::on_minimize() {
+  APP_PROFILE_FUNCTION();
+
   m_minimized = true;
 }
 
 void Application::on_shown() {
+  APP_PROFILE_FUNCTION();
+
   m_minimized = false;
 }
 
 void Application::on_close() {
+  APP_PROFILE_FUNCTION();
+
   stop();
 }
 

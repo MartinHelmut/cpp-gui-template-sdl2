@@ -1,7 +1,6 @@
 #include "Window.hpp"
 
-#include <SDL_render.h>
-#include <SDL_video.h>
+#include <SDL2/SDL.h>
 
 #include "Core/DPIHandler.hpp"
 #include "Core/Debug/Instrumentor.hpp"
@@ -47,10 +46,14 @@ Window::~Window() {
 }
 
 SDL_Window* Window::get_native_window() const {
+  APP_PROFILE_FUNCTION();
+
   return m_window;
 }
 
 SDL_Renderer* Window::get_native_renderer() const {
+  APP_PROFILE_FUNCTION();
+
   return m_renderer;
 }
 

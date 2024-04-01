@@ -74,7 +74,7 @@ add_library(imgui
   ${imgui_SOURCE_DIR}/imstb_rectpack.h ${imgui_SOURCE_DIR}/imstb_textedit.h
   ${imgui_SOURCE_DIR}/imstb_truetype.h
   ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl2.h ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl2.cpp
-  ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer.h ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer.cpp)
+  ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer2.h ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer2.cpp)
 
 # Set include directory based in populated variable `imgui_SOURCE_DIR`.
 target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
