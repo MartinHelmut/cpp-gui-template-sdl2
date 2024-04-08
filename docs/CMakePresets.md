@@ -67,6 +67,9 @@ cpack --preset release
 
 ## Workflows
 
+> [!IMPORTANT]
+> Workflow presets are only available in CMake version 3.25 and up.
+
 To list all available workflows, some dependent on the current system:
 
 ```shell
