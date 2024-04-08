@@ -30,11 +30,13 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Release -B build/release
 cmake --build build/release
 ```
 
-On macOS Xcode should be used as generator via `-GXcode`. For example creating a release build with XCode.
+On macOS Xcode should be used as generator via `-GXcode`. For example creating a release build with XCode. It is also
+necessary to specify the Apple architecture via `CMAKE_OSX_ARCHITECTURES`, for example for a universal executable using
+the value `x86_64;arm64"`.
 
 ```shell
-# Using Xcode
-cmake -GXcode -DCMAKE_BUILD_TYPE=Release -B build/xcode
+# Using Xcode, create universal executable
+cmake -GXcode -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -B build/xcode
 cmake --build build/xcode
 ```
 

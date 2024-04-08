@@ -89,7 +89,8 @@ Run on a built target, in this example **debug**:
 ```
 
 Though, even better is to use **Xcode as generator** to create app builds on macOS. Only difference in usage is running
-CMake with `-GXcode`. If `CMAKE_OSX_ARCHITECTURES` is not set, it will create universal binaries on M1/2 macs.
+CMake with `-GXcode` and setting the `CMAKE_OSX_ARCHITECTURES` variable, for example to `x86_64;arm64` for a universal
+binaries.
 
 To run a **debug** build created with Xcode:
 

@@ -25,7 +25,8 @@
       "generator": "Xcode",
       "binaryDir": "build/xcode-debug",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64"
       },
       "condition": {
         "type": "equals",
@@ -39,7 +40,8 @@
       "generator": "Xcode",
       "binaryDir": "build/xcode-release",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64"
       },
       "condition": {
         "type": "equals",
