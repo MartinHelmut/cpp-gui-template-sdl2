@@ -15,6 +15,9 @@ Having all [requirements](README.md#requirements) set, here you can find how to 
 
 ## TL;DR
 
+> [!IMPORTANT]
+> Workflow presets are only available in CMake version 3.25 and up.
+
 The quickest way possible to get an actual distributable from zero is using the available CMake workflows. For Linux and
 Windows:
 
