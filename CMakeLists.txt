@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-include(cmake/UniversalAppleBuild.cmake)
+include(cmake/AppleBuild.cmake)
 
 project(
   BasicGuiProjectSetup
