@@ -4,6 +4,7 @@ Having all [requirements](README.md#requirements) set, here you can find how to 
 
 ## Table of contents
 
+- [TL;DR](#tldr)
 - [Build](#build)
 - [Execute](#execute)
   - [macOS](#macos)
@@ -11,6 +12,21 @@ Having all [requirements](README.md#requirements) set, here you can find how to 
   - [Linux](#linux)
 - [Distribution](#distribution)
 - [Tests](#tests)
+
+## TL;DR
+
+The quickest way possible to get an actual distributable from zero is using the available CMake workflows. For Linux and
+Windows:
+
+```shell
+cmake --workflow --preset dist
+```
+
+And for macOS with Xcode:
+
+```shell
+cmake --workflow --preset xcode-dist
+```
 
 ## Build
 
