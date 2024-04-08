@@ -23,10 +23,10 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/assets/ DESTINATION ${CMAKE_INSTALL_
 # Linux app icon setup
 configure_file(
   ${PROJECT_SOURCE_DIR}/src/app/Manifests/App.desktop.in
-  ${CMAKE_CURRENT_BINARY_DIR}/App.desktop
+  ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.desktop
   @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/App.desktop
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.desktop
   DESTINATION share/applications)
 install(FILES ${PROJECT_SOURCE_DIR}/src/assets/icons/BaseAppIcon.png
   DESTINATION share/pixmaps
-  RENAME ${APP_NAME}_icon.png)
+  RENAME ${NAME}_icon.png)
