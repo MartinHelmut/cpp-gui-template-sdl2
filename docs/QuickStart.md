@@ -53,7 +53,7 @@ the value `x86_64;arm64"`.
 ```shell
 # Using Xcode, create universal executable
 cmake -GXcode -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -B build/xcode
-cmake --build build/xcode
+cmake --build build/xcode --config Release
 ```
 
 ## Execute
