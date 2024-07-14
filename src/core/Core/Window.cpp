@@ -33,7 +33,6 @@ Window::Window(const Settings& settings) {
 
   SDL_RendererInfo info;
   SDL_GetRendererInfo(m_renderer, &info);
-  DPIHandler::set_render_scale(m_renderer);
 
   APP_DEBUG("Current SDL_Renderer: {}", info.name);
 }

@@ -29,11 +29,6 @@ WindowSize DPIHandler::get_dpi_aware_window_size(const Window::Settings& setting
   return {width, height};
 }
 
-void DPIHandler::set_render_scale([[maybe_unused]] SDL_Renderer* renderer) {
-  APP_PROFILE_FUNCTION();
-  // do nothing
-}
-
 void DPIHandler::set_global_font_scaling([[maybe_unused]] ImGuiIO* io) {
   APP_PROFILE_FUNCTION();
   // do nothing
