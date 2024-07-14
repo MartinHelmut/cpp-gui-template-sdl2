@@ -147,9 +147,12 @@ ExitStatus App::Application::run() {
     // Rendering
     ImGui::Render();
 
+    SDL_RenderSetScale(m_window->get_native_renderer(),
+        io.DisplayFramebufferScale.x,
+        io.DisplayFramebufferScale.y);
     SDL_SetRenderDrawColor(m_window->get_native_renderer(), 100, 100, 100, 255);
     SDL_RenderClear(m_window->get_native_renderer());
-    ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+    ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), m_window->get_native_renderer());
     SDL_RenderPresent(m_window->get_native_renderer());
   }
 
