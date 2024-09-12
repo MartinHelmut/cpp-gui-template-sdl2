@@ -22,8 +22,7 @@ Window::Window(const Settings& settings) {
       size.height,
       window_flags);
 
-  auto renderer_flags{
-      static_cast<SDL_RendererFlags>(SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED)};
+  Uint32 renderer_flags{SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED};
   m_renderer = SDL_CreateRenderer(m_window, -1, renderer_flags);
 
   if (m_renderer == nullptr) {

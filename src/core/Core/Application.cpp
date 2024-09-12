@@ -112,7 +112,7 @@ ExitStatus App::Application::run() {
         if (ImGui::BeginMenu("View")) {
           ImGui::MenuItem("Some Panel", nullptr, &m_show_some_panel);
           ImGui::MenuItem("ImGui Demo Panel", nullptr, &m_show_demo_panel);
-          ImGui::MenuItem("Debug Panel", nullptr, &m_show_debug_panel);
+          ImGui::MenuItem("Debug Panels", nullptr, &m_show_debug_panel);
           ImGui::EndMenu();
         }
 
@@ -133,7 +133,10 @@ ExitStatus App::Application::run() {
 
       // Debug panel
       if (m_show_debug_panel) {
-        ImGui::Begin("Debug panel", &m_show_debug_panel);
+        ImGui::ShowMetricsWindow();
+        ImGui::ShowDebugLogWindow();
+
+        ImGui::Begin("App debug panel", &m_show_debug_panel);
         ImGui::Text("User config path: %s", user_config_path.c_str());
         ImGui::Separator();
         ImGui::Text("Font path: %s", font_path.c_str());
