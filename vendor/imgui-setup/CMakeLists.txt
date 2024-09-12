@@ -1,7 +1,4 @@
-FetchContent_GetProperties(imgui)
-if (NOT imgui_POPULATED)
-  FetchContent_Populate(imgui)
-endif ()
+FetchContent_MakeAvailable(imgui)
 
 add_library(imgui
   ${imgui_SOURCE_DIR}/imgui.cpp ${imgui_SOURCE_DIR}/imgui.h
