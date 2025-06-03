@@ -1,6 +1,7 @@
 # Application build output
 build/
 distribution/
+.cache/
 
 # Created by CPack when executing tests.
 Testing/
@@ -14,3 +15,4 @@ profile.json
 
 # User defined CMake preset file.
 CMakeUserPresets.json
+*.sublime-workspace
