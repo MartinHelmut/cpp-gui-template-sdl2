@@ -1,0 +1,124 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    }
+  ],
+  "settings": {
+    "cmake": {
+       "build_folder": "$folder/build",
+       "command_line_overrides": {
+          "CMAKE_POLICY_VERSION_MINIMUM": "3.5",
+       },
+    },
+    "LSP": {
+      "clangd": {
+        "initializationOptions": {
+          "clangd.clang-tidy": true,
+        },
+      },
+    },
+  },
+  "build_systems":
+  [
+		{
+			"config": "Debug",
+			"env":
+			{
+			},
+			"generator": "Unix Makefiles",
+			"name": "Debug",
+			"target": "cmake_build",
+			"variants":
+			[
+				{
+					"build_target": "App",
+					"name": "App"
+				},
+				{
+					"artifact": "src/app/App.app/Contents/MacOS/App",
+					"build_target": "App",
+					"name": "Run: App",
+					"target": "cmake_run"
+				},
+				{
+					"artifact": "src/app/App.app/Contents/MacOS/App",
+					"build_target": "App",
+					"debug": true,
+					"name": "Run under LLDB: App",
+					"target": "cmake_run"
+				},
+				{
+					"build_target": "Core",
+					"name": "Core"
+				},
+				{
+					"build_target": "ResourcesTest",
+					"name": "ResourcesTest"
+				},
+				{
+					"artifact": "src/core/Tests/ResourcesTest",
+					"build_target": "ResourcesTest",
+					"name": "Run: ResourcesTest",
+					"target": "cmake_run"
+				},
+				{
+					"artifact": "src/core/Tests/ResourcesTest",
+					"build_target": "ResourcesTest",
+					"debug": true,
+					"name": "Run under LLDB: ResourcesTest",
+					"target": "cmake_run"
+				},
+				{
+					"build_target": "SDL2",
+					"name": "SDL2"
+				},
+				{
+					"build_target": "SDL2-static",
+					"name": "SDL2-static"
+				},
+				{
+					"build_target": "SDL2_test",
+					"name": "SDL2_test"
+				},
+				{
+					"build_target": "Settings",
+					"name": "Settings"
+				},
+				{
+					"build_target": "TestRunner",
+					"name": "TestRunner"
+				},
+				{
+					"build_target": "doctest_with_main",
+					"name": "doctest_with_main"
+				},
+				{
+					"build_target": "fmt",
+					"name": "fmt"
+				},
+				{
+					"build_target": "imgui",
+					"name": "imgui"
+				},
+				{
+					"build_target": "sdl_headers_copy",
+					"name": "sdl_headers_copy"
+				},
+				{
+					"build_target": "spdlog",
+					"name": "spdlog"
+				},
+				{
+					"build_target": "uninstall",
+					"name": "uninstall"
+				},
+				{
+					"name": "ctest",
+					"target": "ctest_run"
+				}
+			],
+			"working_dir": "$folder/build"
+		}
+	],
+}
