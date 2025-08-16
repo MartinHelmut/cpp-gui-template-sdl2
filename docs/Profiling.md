@@ -68,8 +68,7 @@ int Application::run() {
 
 ## Show results
 
-The resulting JSON file uses
-the [Trace Event Format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview). Any
+The resulting JSON file (`profile.json`) uses the [Trace Event Format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview). Any
 tool that can read this format can visualize the profiler data. For example the web
 tool [Perfetto](https://ui.perfetto.dev/) or Chromes built in [chrome://tracing](chrome://tracing). Just drag&drop the
 generated profiler JSON file onto the tool to load it.
@@ -78,6 +77,6 @@ This is roughly how this looks like on Chrome.
 
 ![chrome-trace.png](assets/chrome-trace.png)
 
-***
+---
 
 Next up: [Logging](Logging.md)
