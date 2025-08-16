@@ -16,7 +16,8 @@
       "generator": "Ninja",
       "binaryDir": "build/release",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "WARNINGS_AS_ERRORS": "FALSE"
       }
     },
     {
@@ -41,7 +42,8 @@
       "binaryDir": "build/xcode-release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64"
+        "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64",
+        "WARNINGS_AS_ERRORS": "FALSE"
       },
       "condition": {
         "type": "equals",
@@ -62,9 +64,7 @@
       "displayName": "Build Release",
       "configurePreset": "release",
       "configuration": "Release",
-      "targets": [
-        "App"
-      ]
+      "targets": ["App"]
     },
     {
       "name": "xcode-debug",
@@ -82,9 +82,7 @@
       "displayName": "Build Release (Xcode)",
       "configurePreset": "xcode-release",
       "configuration": "Release",
-      "targets": [
-        "App"
-      ],
+      "targets": ["App"],
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -97,17 +95,13 @@
       "name": "release",
       "displayName": "Distribute Release",
       "configurePreset": "release",
-      "configurations": [
-        "Release"
-      ]
+      "configurations": ["Release"]
     },
     {
       "name": "xcode-release",
       "displayName": "Distribute Release (Xcode)",
       "configurePreset": "xcode-release",
-      "configurations": [
-        "Release"
-      ],
+      "configurations": ["Release"],
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
